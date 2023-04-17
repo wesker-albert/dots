@@ -1,0 +1,157 @@
+#!/bin/bash
+
+function hc() {
+    herbstclient "$@"
+}
+
+hc emit_hook reload
+
+hc pad 0 12 0 0
+
+# scripts
+SCRIPTS="$HOME/.config/herbstluftwm/kohi/scripts"
+
+# remove all existing keybindings
+hc keyunbind --all
+
+# set mod key
+Mod=Mod4
+
+tags
+TAG_NAMES=( "WEB" "DEV" "FILES" "SOCIAL" "MEDIA" )
+TAG_KEYS=( {1..5} 0 )
+
+hc rename default "${TAG_NAMES[0]}" || true
+for i in ${!TAG_NAMES[@]} ; do
+    hc add "${TAG_NAMES[$i]}"
+    key="${TAG_KEYS[$i]}"
+    if ! [ -z "$key" ] ; then
+        hc keybind "$Mod-$key" use_index "$i"
+        hc keybind "$Mod-Shift-$key" move_index "$i"
+    fi
+done
+
+# cycle through tags
+# add additional information in order to cycle only through a monitor's tags
+# and not through all tags
+define-tag-cycle() {
+    local n=$#
+    local tags=( "$@" )
+    for i in "${!tags[@]}" ; do
+        local t="${tags[$i]}"
+        hc chain , new_attr string tags.by-name."$t".my_previous_tag \
+                 , set_attr tags.by-name."$t".my_previous_tag "${tags[$(((i - 1 + n) % n))]}" \
+                 , new_attr string tags.by-name."$t".my_next_tag \
+                 , set_attr tags.by-name."$t".my_next_tag "${tags[$(((i + 1) % n))]}"
+    done
+}
+
+define-tag-cycle "${mon1_names[@]}"
+define-tag-cycle "${mon2_names[@]}"
+define-tag-cycle "${fallback_names[@]}"
+
+# cycle through tags
+# check whether the current tag as a custom "next tag" configured
+# if yes, jump to that one, otherwise fall back to ordinary use_index +1
+hc keybind $Mod-period or , substitute NEXT tags.focus.my_next_tag use NEXT  \
+                          , use_index +1 --skip-visible
+hc keybind $Mod-comma  or , substitute PREV tags.focus.my_previous_tag use PREV  \
+                          , use_index +1 --skip-visible
+
+# keybindings
+hc keybind $Mod-Shift-q spawn xfce4-session-logout
+hc keybind $Mod-Shift-r spawn $SCRIPTS/reload.sh
+hc keybind $Mod-End close
+hc keybind $Mod-v spawn code --unity-launch
+hc keybind $Mod-f spawn /usr/bin/flatpak run --branch=stable --arch=x86_64 --command=/app/bin/run.sh --file-forwarding io.freetubeapp.FreeTube @@u %u @@
+hc keybind $Mod-Shift-f spawn catfish --path=/
+hc keybind $Mod-i spawn librewolf
+hc keybind $Mod-Shift-v spawn vlc
+hc keybind $Mod-s spawn gksu synaptic
+hc keybind $Mod-t spawn thunar
+hc keybind $Mod-Shift-t spawn gksu thunar
+hc keybind $Mod-c spawn kitty
+hc keybind $Mod-Shift-c spawn rofi -show drun -columns 2 -fullscreen
+hc keybind $Mod-w spawn kitty weechat
+
+# layouting
+hc keybind $Mod-Delete remove
+hc keybind $Mod-space cycle_layout 1
+hc keybind $Mod-semicolon split vertical 0.5
+hc keybind $Mod-apostrophe split horizontal 0.5
+hc keybind $Mod-Shift-m fullscreen toggle
+hc keybind $Mod-comma floating toggle
+hc keybind $Mod-period pseudotile toggle
+
+# resizing
+RESIZESTEP=0.025
+hc keybind $Mod-Control-Left resize left +$RESIZESTEP
+hc keybind $Mod-Control-Down resize down +$RESIZESTEP
+hc keybind $Mod-Control-Up resize up +$RESIZESTEP
+hc keybind $Mod-Control-Right resize right +$RESIZESTEP
+
+# focus
+hc keybind $Mod-Left focus left
+hc keybind $Mod-Down focus down
+hc keybind $Mod-Up focus up
+hc keybind $Mod-Right focus right
+hc keybind $Mod-Shift-Left shift left
+hc keybind $Mod-Shift-Down shift down
+hc keybind $Mod-Shift-Up shift up
+hc keybind $Mod-Shift-Right shift right
+
+hc keybind $Mod-Alt-Left chain , lock , shift_to_monitor -l , focus_monitor -l , unlock
+hc keybind $Mod-Alt-Down chain , lock , shift_to_monitor -d , focus_monitor -d , unlock
+hc keybind $Mod-Alt-Up chain , lock , shift_to_monitor -u , focus_monitor -u , unlock
+hc keybind $Mod-Alt-Right chain , lock , shift_to_monitor -r , focus_monitor -r , unlock
+
+# fn keys
+hc keybind Print spawn scrot '%Y-%m-%d_%H-%M-%S.png' -e 'mv $f ~/Pictures/Screenshots &amp; mirage ~/Pictures/Screenshots/$f' -q 100
+hc keybind $Mod-Print spawn scrot '%Y-%m-%d_%H-%M-%S.png' -e 'mv $f ~/Pictures/Screenshots &amp; mirage ~/Pictures/Screenshots/$f' -q 100 -u -b
+
+# mouse
+hc mouseunbind --all
+hc mousebind $Mod-Button1 move
+hc mousebind $Mod-Button2 resize
+hc mousebind $Mod-Button3 zoom
+
+# colors
+hc set frame_bg_transparent 1
+hc set frame_border_width 0
+hc set window_border_width 2
+hc set window_border_inner_width 0
+hc set window_border_normal_color '#242119'
+hc set window_border_active_color '#8E7B6B'
+hc set always_show_frame 0
+hc set frame_gap 20
+hc set frame_active_opacity 0
+hc set frame_normal_opacity 0
+hc set frame_transparent_width 0
+hc set window_gap 0
+hc set frame_padding 0
+hc set smart_window_surroundings 0
+hc set smart_frame_surroundings 0
+hc set mouse_recenter_gap 0
+
+# multi-monitors
+hc set auto_detect_monitors 1
+hx set swap_monitors_to_get_tag 0
+
+# rules
+hc unrule -F
+hc rule focus=on
+hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on
+hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
+hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK)' manage=off
+
+# unlock, just to be sure
+hc unlock
+
+# multi-monitors
+hc detect_monitors
+
+# autostart
+$SCRIPTS/startup.sh &
+
+# tag 4
+#hc rule class=Gimp tag='4:IMG'
