@@ -119,3 +119,6 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
+# kohi motd
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+echo "\033[90m  \033[32m  \033[31m  \033[39m \033[0m\n"
