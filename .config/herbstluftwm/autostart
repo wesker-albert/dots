@@ -1,6 +1,6 @@
 #!/bin/bash
 
-WM_HOME="$HOME/.config/herbstluftwm"
+WM_THEME="$HOME/.config/herbstluftwm/kohi"
 
 # autostart
-$WM_HOME/kohi/autostart &
+$WM_THEME/autostart &

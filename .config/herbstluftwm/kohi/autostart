@@ -106,8 +106,8 @@ hc keybind $Mod-Alt-Up chain , lock , shift_to_monitor -u , focus_monitor -u , u
 hc keybind $Mod-Alt-Right chain , lock , shift_to_monitor -r , focus_monitor -r , unlock
 
 # fn keys
-hc keybind Print spawn scrot '%Y-%m-%d_%H-%M-%S.png' -e 'mv $f ~/Pictures/Screenshots &amp; mirage ~/Pictures/Screenshots/$f' -q 100
-hc keybind $Mod-Print spawn scrot '%Y-%m-%d_%H-%M-%S.png' -e 'mv $f ~/Pictures/Screenshots &amp; mirage ~/Pictures/Screenshots/$f' -q 100 -u -b
+hc keybind Print spawn $SCRIPTS/screenshot.sh current_monitor
+hc keybind $Mod-Print spawn $SCRIPTS/screenshot.sh current_window
 
 # mouse
 hc mouseunbind --all
@@ -140,7 +140,7 @@ hx set swap_monitors_to_get_tag 0
 # rules
 hc unrule -F
 hc rule focus=on
-hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on
+hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on floatplacement=center
 hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK)' manage=off
 
