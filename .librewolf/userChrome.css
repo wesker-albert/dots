@@ -1,3 +1,134 @@
+:root {
+    --arrowpanel-background: #16150E !important;
+    --arrowpanel-border-color: ThreeDShadow;
+    --arrowpanel-border-radius: 8px;
+    --arrowpanel-color: #DDDDDD !important;
+    --arrowpanel-dimmed-further: color-mix(in srgb, currentColor 30%, transparent);
+    --arrowpanel-dimmed: color-mix(in srgb, currentColor 17%, transparent);
+    --arrowpanel-header-back-icon-full-width: calc(16px + (2 * var(--arrowpanel-header-back-icon-padding)));
+    --arrowpanel-header-back-icon-padding: 8px;
+    --arrowpanel-header-height: calc(16px + (var(--arrowpanel-header-back-icon-padding) * 2) + (var(--panel-separator-margin-horizontal) * 2));
+    --arrowpanel-header-info-icon-full-width: calc(16px + (2 * var(--arrowpanel-header-info-icon-padding)));
+    --arrowpanel-header-info-icon-margin-inline-end: 4px;
+    --arrowpanel-header-info-icon-padding: 4px;
+    --arrowpanel-menuitem-border-radius: 4px;
+    --arrowpanel-menuitem-margin-block: 0;
+    --arrowpanel-menuitem-margin-inline: 8px;
+    --arrowpanel-menuitem-margin: var(--arrowpanel-menuitem-margin-block) var(--arrowpanel-menuitem-margin-inline);
+    --arrowpanel-menuitem-padding-block: 8px;
+    --arrowpanel-menuitem-padding-inline: 8px;
+    --arrowpanel-menuitem-padding: var(--arrowpanel-menuitem-padding-block) var(--arrowpanel-menuitem-padding-inline);
+    --arrowpanel-padding: 16px;
+    --autocomplete-popup-highlight-background: SelectedItem;
+    --autocomplete-popup-highlight-color: SelectedItemText;
+    --autocomplete-popup-hover-background: var(--arrowpanel-dimmed);
+    --autocomplete-popup-separator-color: color-mix(in srgb, currentColor 14%, transparent);
+    --bookmark-block-padding: 4px;
+    --button-active-bgcolor: color-mix(in srgb, currentColor 30%, transparent);
+    --button-bgcolor: #8C9440 !important;
+    --button-color: #F4F4F4 !important;
+    --button-hover-bgcolor: #B5BD68 !important;
+    --button-primary-active-bgcolor: color-mix(in srgb, black 20%, AccentColor);
+    --button-primary-bgcolor: #8C9440 !important;
+    --button-primary-color: AccentColorText;
+    --button-primary-hover-bgcolor: #B5BD68 !important;
+    --buttons-destructive-active-bgcolor: #810220;
+    --buttons-destructive-bgcolor: #e22850;
+    --buttons-destructive-color: #fbfbfe;
+    --buttons-destructive-hover-bgcolor: #c50042;
+    --checkbox-checked-active-bgcolor: #16150E !important;
+    --checkbox-checked-bgcolor: #16150E !important;
+    --checkbox-checked-border-color: #463A31 !important;
+    --checkbox-checked-color: #B5BD68 !important;
+    --checkbox-checked-hover-bgcolor: #16150E !important;
+    --checkbox-unchecked-active-bgcolor: #16150E !important;
+    --checkbox-unchecked-bgcolor: #16150E !important;
+    --checkbox-unchecked-hover-bgcolor: #16150E !important;
+    --chrome-content-separator-color: ThreeDShadow;
+    --default-focusring-width: 1px !important;
+    --default-focusring: var(--default-focusring-width) dotted;
+    --ext-theme-background-transition: background-color 0.1s cubic-bezier(.17, .67, .83, .67);
+    --focus-outline-color: #8C944099 !important;
+    --focus-outline-inset: calc(-1 * var(--focus-outline-width));
+    --focus-outline-offset: 2px;
+    --focus-outline-width: 1px !important;
+    --focus-outline: var(--focus-outline-width) solid var(--focus-outline-color);
+    --identity-box-margin-inline: 4px;
+    --inline-tab-padding: 8px;
+    --input-border-color: #463A31 !important;
+    --lwt-accent-color: white;
+    --lwt-additional-images: none;
+    --lwt-background-alignment: right top;
+    --lwt-background-tiling: no-repeat;
+    --lwt-brighttext-url-color: #00ddff;
+    --lwt-tab-attention-icon-color: #CC6666 !important;
+    --lwt-text-color: rgba(0, 0, 0);
+    --menu-panel-width-wide: 29em;
+    --menu-panel-width: 22.35em;
+    --panelui-subview-transition-duration: 150ms;
+    --popup-notification-body-width: calc(31em - calc(2 * var(--arrowpanel-padding)));
+    --short-notification-background: #0250BB;
+    --short-notification-gradient: #9059FF;
+    --tab-attention-icon-color: var(--lwt-tab-attention-icon-color) !important;
+    --tab-block-margin: 4px;
+    --tab-border-radius: 4px;
+    --tab-min-height: 36px;
+    --tab-shadow-max-size: 6px;
+    --tabpanel-background-color: #2B2A33 !important;
+    --tabs-navbar-shadow-size: none !important;
+    --toolbar-bgcolor: var(--toolbar-non-lwt-bgcolor) !important;
+    --toolbar-color: #DDDDDD !important;
+    --toolbar-field-background-color: #16150E !important;
+    --toolbar-field-border-color: #463A31 !important;
+    --toolbar-field-color: #F4F4F4 !important;
+    --toolbar-field-focus-background-color: #16150E !important;
+    --toolbar-field-focus-border-color: var(--focus-outline-color);
+    --toolbar-field-focus-color: #F4F4F4 !important;
+    --toolbar-non-lwt-bgcolor: #242119 !important;
+    --toolbar-start-end-padding: 8px;
+    --toolbarbutton-active-background: #5F4F4375 !important;
+    --toolbarbutton-border-radius: 4px;
+    --toolbarbutton-disabled-opacity: 0.4;
+    --toolbarbutton-height: 0;
+    --toolbarbutton-hover-background: #16150EDD !important;
+    --toolbarbutton-icon-fill: #8E7B6B !important;
+    --toolbarbutton-inner-padding: 8px;
+    --toolbarbutton-outer-padding: 2px;
+    --toolbarseparator-color: color-mix(in srgb, currentColor 60%, transparent);
+    --uei-attention-dot-size: 8px;
+    --uei-button-active-bgcolor: var(--panel-item-active-bgcolor);
+    --uei-button-active-color: inherit;
+    --uei-button-attention-dot-color: var(--tab-attention-icon-color);
+    --uei-button-hover-bgcolor: var(--panel-item-hover-bgcolor);
+    --uei-button-hover-color: inherit;
+    --uei-icon-size: 32px;
+    --urlbar-box-active-bgcolor: #16150E !important;
+    --urlbar-box-bgcolor: #16150E !important;
+    --urlbar-box-focus-bgcolor: #16150E !important;
+    --urlbar-box-hover-bgcolor: #16150EDD !important;
+    --urlbar-box-hover-text-color: var(--urlbar-box-text-color);
+    --urlbar-box-text-color: inherit;
+    --urlbar-container-padding: 1px;
+    --urlbar-icon-border-radius: calc(var(--toolbarbutton-border-radius) - 1px);
+    --urlbar-icon-fill-opacity: 0.9;
+    --urlbar-icon-padding: 6px;
+    --urlbar-margin-inline: 5px;
+    --urlbar-min-height: 32px;
+    --urlbar-popup-action-color: hsl(178, 100%, 28%);
+    --urlbar-popup-url-color: -moz-nativehyperlinktext;
+    --urlbar-search-button-width: calc(16px + 2 * var(--urlbar-icon-padding));
+    --urlbarView-action-slide-in-distance: 200px;
+    --urlbarView-favicon-width: 16px;
+    --urlbarView-icon-margin-end: calc(var(--urlbar-icon-padding) + var(--identity-box-margin-inline));
+    --urlbarView-item-inline-padding: var(--urlbar-icon-padding);
+    --urlbarView-result-button-background-opacity: 60%;
+    --urlbarView-result-button-hover-background-color: color-mix(in srgb, var(--toolbar-field-focus-color) var(--urlbarView-result-button-background-opacity), transparent);
+    --urlbarView-result-button-hover-color: var(--toolbar-field-focus-background-color);
+    --urlbarView-result-button-selected-background-color: color-mix(in srgb, var(--toolbar-field-focus-background-color) var(--urlbarView-result-button-background-opacity), transparent);
+    --urlbarView-result-button-selected-color: var(--toolbar-field-focus-color);
+    --urlbarView-row-gutter: 2px;
+}
+
 #titlebar {
     background-color: #1E1C14;
 }
@@ -8,19 +139,75 @@
     display: none !important;
 }
 
-.tabbrowser-tab:not([selected="true"]) .tab-background {
-    background-color: #242119 !important;
+findbar, .findbar-container {
+    height: fit-content !important;
 }
 
-.tabbrowser-tab:not([selected="true"]) .tab-text {
+findbar .toolbarbutton-icon {
+    fill: #8E7B6B !important;
+}
+
+findbar input {
+    background-color: #16150E !important;
+    border-color: #463A31 !important;
+}
+
+.checkbox-check {
+    border-color: #463A31 !important;
+}
+
+
+popup,
+menupopup,
+panel,
+panelmultview,
+.panel-subview-body {
+    --panel-and-palette-icon-size: 16px;
+    --panel-background: #16150E !important;
+    --panel-banner-item-active-bgcolor: var(--button-active-bgcolor);
+    --panel-banner-item-background-color: var(--button-bgcolor);
+    --panel-banner-item-color: var(--button-color);
+    --panel-banner-item-hover-bgcolor: #1E1C14 !important;
+    --panel-banner-item-info-icon-bgcolor: #0090ED;
+    --panel-banner-item-update-supported-bgcolor: #2AC3A2;
+    --panel-border-color: #16150E !important;
+    --panel-border-radius: 6px !important;
+    --panel-color: #DDDDDD !important;
+    --panel-description-color: #8E7B6B !important;
+    --panel-disabled-color: GrayText;
+    --panel-item-active-bgcolor: var(--button-active-bgcolor);
+    --panel-item-hover-bgcolor: #1E1C14 !important;
+    --panel-separator-color: #8E7B6B !important;
+    --panel-separator-margin-horizontal: 8px;
+    --panel-separator-margin-vertical: 4px;
+    --panel-separator-margin: var(--panel-separator-margin-vertical) var(--panel-separator-margin-horizontal);
+    --panel-shadow-margin: unset !important;
+    --panel-shortcut-color: #8E7B6B !important;
+    --panel-subview-body-padding-block: 8px;
+    --panel-subview-body-padding-inline: 0;
+    --panel-subview-body-padding: var(--panel-subview-body-padding-block) var(--panel-subview-body-padding-inline);
+}
+
+
+:is(popup, menupopup, panel, panelmultiview, .panel-subview-body) :is(menuitem, menu, .subviewbutton, toolbarbutton):not(#appMenu-fxa-status2) toolbarbutton:hover > .toolbarbutton-icon {
+    stroke:  #B5BD68 !important;
+    background-color:  #B5BD68 !important;
+    color: #F4F4F4 !important;
+}
+
+
+:is(popup, menupopup, panel, panelmultiview, .panel-subview-body) :is(menuitem, menu, .subviewbutton, toolbarbutton):not(#appMenu-fxa-status2):hover {
+    background-color: #1E1C14 !important;
+    color: #B5BD68 !important;
+}
+
+.tabbrowser-tab:not([selected="true"]) :is(.tab-background, .tab-text) {
+    background-color: #242119 !important;
     color: #A7A7A6 !important;
 }
 
-.tabbrowser-tab[selected="true"] .tab-background {
+.tabbrowser-tab[selected="true"] :is(.tab-background, .tab-text) {
     background-color: #463A31 !important;
-}
-
-.tabbrowser-tab[selected="true"] .tab-text {
     color: #F4F4F4 !important;
 }
 
@@ -28,49 +215,6 @@
     margin-inline-start: 0 !important;
 }
 
-toolbarbutton:hover .toolbarbutton-icon,
-toolbarbutton:hover .toolbarbutton-badge-stack {
-    background-color: #16150EDD !important;
-}
-
-toolbarbutton:active .toolbarbutton-icon,
-toolbarbutton:active .toolbarbutton-badge-stack {
-    background-color: #5F4F4375 !important;
-}
-
-.toolbarbutton-icon,
-.toobarbutton-badge-stack {
-    color: #8E7B6B !important;
-}
-
-#nav-bar {
-    background-color: #242119 !important;
-}
-
-#urlbar-background,
-.checkbox-check {
-    background-color: #16150E !important;
-    border-color: #463A31 !important;
-}
-
-.checkbox-check {
-    color: #B5BD68 !important;
-}
-
-#urlbar-input-container image,
-.urlbar-icon {
-    color: #B19C75 !important;
-}
-
-#urlbar-search-mode-indicator {
-    background-color: #F0E5C3 !important;
-    color: #16150E !important;
-}
-
 ::selection {
     background-color: #8E7B6B65 !important;
-}
-
-findbar {
-    background-color: #16150E !important;
 }

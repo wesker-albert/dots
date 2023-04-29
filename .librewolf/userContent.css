@@ -1,0 +1,45 @@
+:root {
+    --newtab-background-color-secondary: #16150E !important;
+    --newtab-background-color: #242119 !important;
+    --newtab-border-color: color-mix(in srgb, var(--newtab-background-color) 75%, #000);
+    --newtab-button-secondary-color: inherit;
+    --newtab-element-active-color: #5F4F4375 !important;
+    --newtab-element-hover-color: #1E1C14 !important;
+    --newtab-element-secondary-active-color: #5F4F4375 !important;
+    --newtab-element-secondary-color: color-mix(in srgb, currentColor 10%, transparent);
+    --newtab-element-secondary-hover-color: #1E1C14 !important;
+    --newtab-inner-box-shadow-color: rgba(0, 0, 0, 0.1);
+    --newtab-overlay-color: color-mix(in srgb, var(--newtab-background-color) 85%, transparent);
+    --newtab-primary-action-background-dimmed: color-mix(in srgb, var(--newtab-primary-action-background) 25%, transparent);
+    --newtab-primary-action-background-pocket-dimmed: color-mix(in srgb, var(--newtab-primary-action-background-pocket) 25%, transparent);
+    --newtab-primary-action-background-pocket: #8C9440 !important;
+    --newtab-primary-action-background: #8C9440 !important;
+    --newtab-primary-element-active-color: #5F4F4375 !important;
+    --newtab-primary-element-hover-color: #8C9440 !important;
+    --newtab-primary-element-hover-pocket-color: #8C9440 !important;
+    --newtab-primary-element-text-color: #F4F4F4 !important;
+    --newtab-search-icon: url(moz-extension://673d3f49-b68b-42b1-abcd-b0e6f8e1597b/favicon.ico);
+    --newtab-text-primary-color: #DDDDDD;
+    --newtab-text-secondary-color: color-mix(in srgb, var(--newtab-text-primary-color) 70%, transparent);
+    --newtab-textbox-focus-boxshadow: none !important;
+    --newtab-textbox-focus-color: #8C944099 !important;
+    --newtab-wordmark-color: #DDDDDD;
+}
+
+.search-inner-wrapper {
+    --newtab-background-color-secondary: #16150E !important;
+}
+
+.compact-cards .card-outer .card-context .card-context-icon.icon-bookmark-added {
+    fill: #8C9440 !important
+}
+
+.personalize-button {
+    border: 1px solid #00000000 !important
+}
+.personalize-button:focus-visible,
+.top-site-button:focus > .tile {
+    box-shadow: none !important;
+    border: 1px solid #8C944099 !important;
+    outline: none !important;
+}
