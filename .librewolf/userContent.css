@@ -43,3 +43,23 @@
     border: 1px solid #8C944099 !important;
     outline: none !important;
 }
+
+.logo-and-wordmark {
+    margin-bottom: 60px !important;
+}
+
+.logo {
+    width:fit-content !important;
+    height: fit-content !important;
+}
+
+.logo:before {
+    color: #F4F4F4 !important;
+    font-family: "AudimatMono Nerd Font";
+    font-size: 65pt !important;
+    content: "" !important;
+}
+
+.wordmark {
+    display: none !important;
+}
