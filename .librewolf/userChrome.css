@@ -44,7 +44,7 @@
     --checkbox-unchecked-active-bgcolor: #16150E !important;
     --checkbox-unchecked-bgcolor: #16150E !important;
     --checkbox-unchecked-hover-bgcolor: #16150E !important;
-    --chrome-content-separator-color: ThreeDShadow;
+    --chrome-content-separator-color: #1E1C14 !important;
     --default-focusring-width: 1px !important;
     --default-focusring: var(--default-focusring-width) dotted;
     --ext-theme-background-transition: background-color 0.1s cubic-bezier(.17, .67, .83, .67);
@@ -140,7 +140,9 @@
 }
 
 findbar, .findbar-container {
+    background-color: #1E1C14 !important;
     height: fit-content !important;
+    border: none !important
 }
 
 findbar .toolbarbutton-icon {
