@@ -113,9 +113,10 @@ hx set swap_monitors_to_get_tag 0
 # rules
 hc unrule -F
 hc rule focus=on
-hc rule windowtype~"_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)" pseudotile=on floatplacement=center
+hc rule windowtype~"_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)" floatplacement=center
 hc rule windowtype="_NET_WM_WINDOW_TYPE_DIALOG" focus=on
 hc rule windowtype~"_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK)" manage=off
+hc rule class="kitty_float" floatplacement=center floating=true focus=true
 
 # unlock, just to be sure
 hc unlock
