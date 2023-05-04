@@ -1,0 +1,112 @@
+* {
+    font:               "AudimatMono Nerd Font 13";
+} 
+
+* {
+    --border-radius:    3px;
+    --icon-size:        30px;
+    --padding:          8px;
+    --spacing:          10px;
+}
+
+window {
+    anchor:             center;
+    background-color:   #1E1C14;
+    border-color:       #8E7B6B;
+    border-radius:      @--border-radius;
+    border:             2px;
+    children:           [ wrapper-mode-switcher, inputbar, listview ];
+    location:           center;
+    padding:            20px;
+    spacing:            @--spacing;
+    width:              450px;
+}
+
+
+inputbar  {
+    background-color:   #1E1C14;
+    children:           [ wrapper ];
+}
+
+wrapper {
+    background-color:   #16150E;
+    border-color:       #463A31;
+    border-radius:      @--border-radius;
+    border:             1px;
+    children:           [ entry, textbox ];
+    orientation:        horizontal;
+    padding:            @--padding;
+}
+
+entry {
+    background-color:   inherit;
+    placeholder:        "Search...";
+    text-color:         #DDDDDD;
+}
+
+textbox {
+    background-color:   inherit;
+    expand:             false;
+    str:                "";
+    text-color:         #8E7B6B;
+}
+
+
+wrapper-mode-switcher {
+    children:           [ mode-switcher ];
+    expand:             false;
+    orientation:        horizontal;
+}
+
+mode-switcher {
+    background-color:   #1E1C14;
+    expand:             true;
+    spacing:            @--spacing;
+}
+
+button {
+    background-color:   #242119;
+    border-radius:      @--border-radius;
+    padding:            @--padding;
+    text-color:         #A7A7A6;
+}
+
+button selected {
+    background-color:   #463A31;
+    text-color:         #F4F4F4;
+}
+
+
+listview {
+    background-color:   #242119;
+    border-radius:      @--border-radius;
+    expand:             true;
+    lines:              10;
+    padding:            @--spacing;
+    scrollbar:          false;
+    spacing:            0;
+}
+
+element {
+    background-color:   inherit;
+    border-radius:      @--border-radius;
+    padding:            @--padding;
+    spacing:            @--spacing;
+    text-color:         #DDDDDD;
+}
+
+element-icon {
+    background-color:   inherit;
+    size:               @--icon-size;
+}
+
+element-text {
+    background-color:   inherit;
+    padding:            4px 0 0 0;
+    text-color:         inherit;
+}
+
+element.selected {
+    background-color:   #1E1C14;
+    text-color:         #B5BD68;
+}

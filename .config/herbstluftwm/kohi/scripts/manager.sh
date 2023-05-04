@@ -1,16 +1,18 @@
 #!/bin/bash
 
 function reload() {
-    killall -q polybar
-    killall -q compton
+    killall -q compton &
+    killall -w -q polybar &
 
     herbstclient reload 
 }
 
 function init() {
-    compton-launch.sh
+    compton-launch.sh &
 
-    polybar main
+    sleep 2s
+    
+    polybar main &
     polybar secondary
 }
 

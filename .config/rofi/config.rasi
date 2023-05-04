@@ -1,0 +1,14 @@
+configuration {
+	modi: "drun,run";
+	show-icons: true;
+	icon-theme: "Gnome";
+
+	terminal: "kitty";
+
+	display-drun: "Apps";
+	drun-display-format: "{name}";
+
+	display-run: "Run";
+}
+
+@theme "kohi/config.rasi"
