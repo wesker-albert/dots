@@ -32,7 +32,7 @@ for i in ${!TAG_NAMES[@]} ; do
 done
 
 # keybindings
-hc keybind $MOD-Shift-q spawn xfce4-session-logout
+hc keybind $MOD-Shift-q spawn $SCRIPTS/rofi-power-menu.sh
 hc keybind $MOD-Shift-r spawn $SCRIPTS/manager.sh reload
 hc keybind $MOD-End close
 hc keybind $MOD-v spawn code --unity-launch
