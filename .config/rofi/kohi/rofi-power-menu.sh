@@ -38,13 +38,13 @@ icons[shutdown]="\Uf0425"
 icons[cancel]="\Uf0156"
 
 declare -A actions
-actions[lockscreen]="loginctl lock-session ${XDG_SESSION_ID-}"
+actions[lockscreen]="light-locker-command --lock"
 #actions[switchuser]="???"
-actions[logout]="loginctl terminate-session ${XDG_SESSION_ID-}"
-actions[suspend]="systemctl suspend"
-actions[hibernate]="systemctl hibernate"
-actions[reboot]="systemctl reboot"
-actions[shutdown]="systemctl poweroff"
+actions[logout]="dm-tool switch-to-greeter"
+actions[suspend]="sudo /usr/sbin/pm-suspend"
+actions[hibernate]="sudo /usr/sbin/pm-hibernate"
+actions[reboot]="sudo /sbin/reboot"
+actions[shutdown]="sudo /sbin/shutdown"
 
 # By default, ask for confirmation for actions that are irreversible
 confirmations=(reboot shutdown logout)

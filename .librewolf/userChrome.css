@@ -129,8 +129,10 @@
     --urlbarView-row-gutter: 2px;
 }
 
-#titlebar {
-    background-color: #1E1C14;
+#titlebar,
+#TabsToolbar,
+.toolbar-items {
+    background-color: #1E1C14 !important;
 }
 
 .titlebar-buttonbox-container,
@@ -139,7 +141,8 @@
     display: none !important;
 }
 
-findbar, .findbar-container {
+findbar,
+.findbar-container {
     background-color: #1E1C14 !important;
     height: fit-content !important;
     border: none !important
@@ -191,9 +194,9 @@ panelmultview,
 }
 
 
-:is(popup, menupopup, panel, panelmultiview, .panel-subview-body) :is(menuitem, menu, .subviewbutton, toolbarbutton):not(#appMenu-fxa-status2) toolbarbutton:hover > .toolbarbutton-icon {
-    stroke:  #B5BD68 !important;
-    background-color:  #B5BD68 !important;
+:is(popup, menupopup, panel, panelmultiview, .panel-subview-body) :is(menuitem, menu, .subviewbutton, toolbarbutton):not(#appMenu-fxa-status2) toolbarbutton:hover>.toolbarbutton-icon {
+    stroke: #B5BD68 !important;
+    background-color: #B5BD68 !important;
     color: #F4F4F4 !important;
 }
 
