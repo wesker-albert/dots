@@ -13,7 +13,7 @@ set -e
 set -u
 
 # All supported choices
-all=(shutdown reboot suspend hibernate logout lockscreen)
+all=(shutdown reboot lockscreen switchuser)
 
 # By default, show all (i.e., just copy the array)
 show=("${all[@]}")
@@ -39,12 +39,12 @@ icons[cancel]="\Uf0156"
 
 declare -A actions
 actions[lockscreen]="light-locker-command --lock"
-#actions[switchuser]="???"
-actions[logout]="dm-tool switch-to-greeter"
-actions[suspend]="sudo /usr/sbin/pm-suspend"
-actions[hibernate]="sudo /usr/sbin/pm-hibernate"
+actions[switchuser]="dm-tool switch-to-greeter"
+actions[logout]=""
+actions[suspend]=""
+actions[hibernate]=""
 actions[reboot]="sudo /sbin/reboot"
-actions[shutdown]="sudo /sbin/shutdown"
+actions[shutdown]="sudo /sbin/poweroff"
 
 # By default, ask for confirmation for actions that are irreversible
 confirmations=(reboot shutdown logout)
