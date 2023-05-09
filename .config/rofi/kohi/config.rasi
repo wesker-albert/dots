@@ -15,7 +15,7 @@ window {
     border-color:       #8E7B6B;
     border-radius:      @--border-radius;
     border:             2px;
-    children:           [ wrapper-mode-switcher, inputbar, listview ];
+    children:           [ inputbar, listview ];
     location:           center;
     padding:            20px;
     spacing:            @--spacing;
@@ -25,7 +25,8 @@ window {
 
 inputbar  {
     background-color:   #1E1C14;
-    children:           [ wrapper ];
+    children:           [ wrapper, wrapper-mode-switcher];
+    spacing:            @--spacing;
 }
 
 wrapper {
@@ -50,7 +51,6 @@ textbox {
     str:                "";
     text-color:         #8E7B6B;
 }
-
 
 wrapper-mode-switcher {
     children:           [ mode-switcher ];

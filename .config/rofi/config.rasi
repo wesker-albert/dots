@@ -5,10 +5,10 @@ configuration {
 
 	terminal: "kitty";
 
-	display-drun: "Apps";
+	display-drun: "";
 	drun-display-format: "{name}";
 
-	display-run: "Run";
+	display-run: "";
 }
 
 @theme "kohi/config.rasi"
