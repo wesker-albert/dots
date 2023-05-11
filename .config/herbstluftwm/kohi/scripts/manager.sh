@@ -51,6 +51,11 @@ function autostart() {
 
     sleep 5s
 
+    if ! pidof -x aria2c; then
+        aria2c --conf-path=$HOME/.config/aria2/aria2.conf --rpc-secret=$(secret-tool lookup service aria2) &
+        notify-send --icon='filesave' 'aria2' 'Session has started'
+    fi
+
     if ! pidof -x volumeicon; then
         volumeicon &
     fi
