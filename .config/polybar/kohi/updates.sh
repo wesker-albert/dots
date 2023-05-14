@@ -21,7 +21,7 @@ get_update_count() {
         | wc -l)
     fi
 
-    if [ $UPDATE_COUNT==0 ]; then
+    if [ "$UPDATE_COUNT" -eq "0" ]; then
         exit 1
     fi
 

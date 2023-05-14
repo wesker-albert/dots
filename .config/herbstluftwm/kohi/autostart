@@ -11,17 +11,39 @@ SCRIPTS="$HOME/.config/herbstluftwm/kohi/scripts"
 MOD=Mod4
 
 # floating terminal bootstrap
-KITTY_FLOAT="--class kitty_float -o remember_window_size=n"
-KITTY_WIDTH="-o initial_window_width"
-KITTY_HEIGHT="-o initial_window_height"
+KITTY_FLOAT='--class kitty_float -o remember_window_size=n'
+KITTY_WIDTH='-o initial_window_width'
+KITTY_HEIGHT='-o initial_window_height'
+
 
 hc emit_hook reload
 
 # remove all existing keybindings
 hc keyunbind --all
 
+
+# a e s t h e t i c s
+hc set frame_active_opacity 0
+hc set frame_bg_transparent 0
+hc set frame_border_width 0
+hc set frame_gap 20
+hc set frame_normal_opacity 0
+hc set frame_padding 0
+hc set frame_transparent_width 0
+hc set mouse_recenter_gap 0
+hc set show_frame_decorations none
+hc set smart_frame_surroundings 0
+hc set smart_window_surroundings 0
+hc set window_border_active_color '#F9B0CB'
+hc set window_border_inner_color '#1E1C14'
+hc set window_border_inner_width 9
+hc set window_border_normal_color '#1E1C14'
+hc set window_border_width 14
+hc set window_gap 0
+
+
 # tags
-TAG_NAMES=( "1" "2" "3" "4" )
+TAG_NAMES=( '1' '2' '3' '4' )
 TAG_KEYS=( {1..4} 0 )
 
 hc rename default "${TAG_NAMES[0]}" || true
@@ -34,100 +56,86 @@ for i in ${!TAG_NAMES[@]} ; do
     fi
 done
 
+
 # keybindings
+hc keybind $MOD-c spawn kitty
+hc keybind $MOD-f spawn /usr/bin/flatpak run --branch=stable --arch=x86_64 --command=/app/bin/run.sh --file-forwarding io.freetubeapp.FreeTube @@u %u @@
+hc keybind $MOD-i spawn librewolf
+hc keybind $MOD-m spawn kitty $KITTY_FLOAT $KITTY_WIDTH=60c $KITTY_HEIGHT=30c bash $SCRIPTS/commands.sh spawn_mpv
+hc keybind $MOD-s spawn gksu synaptic
+hc keybind $MOD-Shift-c spawn rofi -show drun
+hc keybind $MOD-Shift-f spawn catfish --path=/
+hc keybind $MOD-Shift-m spawn kitty ytfzf
 hc keybind $MOD-Shift-q spawn $SCRIPTS/rofi-power-menu.sh
 hc keybind $MOD-Shift-r spawn $SCRIPTS/manager.sh reload
-hc keybind $MOD-End close
-hc keybind $MOD-v spawn code --unity-launch
-hc keybind $MOD-f spawn /usr/bin/flatpak run --branch=stable --arch=x86_64 --command=/app/bin/run.sh --file-forwarding io.freetubeapp.FreeTube @@u %u @@
-hc keybind $MOD-Shift-f spawn catfish --path=/
-hc keybind $MOD-i spawn librewolf
-hc keybind $MOD-Shift-v spawn vlc
-hc keybind $MOD-s spawn gksu synaptic
-hc keybind $MOD-t spawn thunar
 hc keybind $MOD-Shift-t spawn gksu thunar
-hc keybind $MOD-c spawn kitty
-hc keybind $MOD-Shift-c spawn rofi -show drun -columns 2 -fullscreen
+hc keybind $MOD-t spawn thunar
+hc keybind $MOD-v spawn code --unity-launch
 hc keybind $MOD-w spawn kitty weechat
-hc keybind $MOD-m spawn kitty $KITTY_FLOAT $KITTY_WIDTH=82c $KITTY_HEIGHT=35c bash $SCRIPTS/commands.sh spawn_mpv
-
-# layouting
-hc keybind $MOD-Delete remove
-hc keybind $MOD-space cycle_layout 1
-hc keybind $MOD-semicolon split vertical 0.5
-hc keybind $MOD-apostrophe split horizontal 0.5
-hc keybind $MOD-Shift-m fullscreen toggle
-hc keybind $MOD-comma floating toggle
-hc keybind $MOD-period pseudotile toggle
-
-# resizing
-RESIZESTEP=0.025
-hc keybind $MOD-Control-Left resize left +$RESIZESTEP
-hc keybind $MOD-Control-Down resize down +$RESIZESTEP
-hc keybind $MOD-Control-Up resize up +$RESIZESTEP
-hc keybind $MOD-Control-Right resize right +$RESIZESTEP
-
-# focus
-hc keybind $MOD-Left focus left
-hc keybind $MOD-Down focus down
-hc keybind $MOD-Up focus up
-hc keybind $MOD-Right focus right
-hc keybind $MOD-Shift-Left shift left
-hc keybind $MOD-Shift-Down shift down
-hc keybind $MOD-Shift-Up shift up
-hc keybind $MOD-Shift-Right shift right
-
-hc keybind $MOD-Alt-Left chain , lock , shift_to_monitor -l , focus_monitor -l , unlock
-hc keybind $MOD-Alt-Down chain , lock , shift_to_monitor -d , focus_monitor -d , unlock
-hc keybind $MOD-Alt-Up chain , lock , shift_to_monitor -u , focus_monitor -u , unlock
-hc keybind $MOD-Alt-Right chain , lock , shift_to_monitor -r , focus_monitor -r , unlock
 
 # fn keys
 hc keybind Print spawn $SCRIPTS/screenshot.sh current_monitor
 hc keybind $MOD-Print spawn $SCRIPTS/screenshot.sh current_window
 
+# frame: control
+hc keybind $MOD-Delete remove
+
+# frame: splitting
+SPLIT_SIZE=0.5
+hc keybind $MOD-Alt-Down split bottom $SPLIT_SIZE
+hc keybind $MOD-Alt-Left split left $SPLIT_SIZE
+hc keybind $MOD-Alt-Right split right $SPLIT_SIZE
+hc keybind $MOD-Alt-Up split top $SPLIT_SIZE
+
+# window: control
+hc keybind $MOD-End close
+hc keybind $MOD-F11 fullscreen toggle
+
+# window: resizing
+RESIZE_STEP=0.025
+hc keybind $MOD-Control-Down resize down +$RESIZE_STEP
+hc keybind $MOD-Control-Left resize left +$RESIZE_STEP
+hc keybind $MOD-Control-Right resize right +$RESIZE_STEP
+hc keybind $MOD-Control-Up resize up +$RESIZE_STEP
+
+# window: focus
+hc keybind $MOD-Down focus down
+hc keybind $MOD-Left focus left
+hc keybind $MOD-Right focus right
+hc keybind $MOD-Shift-Down shift down
+hc keybind $MOD-Shift-Left shift left
+hc keybind $MOD-Shift-Right shift right
+hc keybind $MOD-Shift-Up shift up
+hc keybind $MOD-Up focus up
+
+# window: monitor shift+focus
+hc keybind $MOD-Control-Alt-Down chain , lock , shift_to_monitor -d , focus_monitor -d , unlock
+hc keybind $MOD-Control-Alt-Left chain , lock , shift_to_monitor -l , focus_monitor -l , unlock
+hc keybind $MOD-Control-Alt-Right chain , lock , shift_to_monitor -r , focus_monitor -r , unlock
+hc keybind $MOD-Control-Alt-Up chain , lock , shift_to_monitor -u , focus_monitor -u , unlock
+
+
 # mouse
 hc mouseunbind --all
-hc mousebind $MOD-Button1 move
-hc mousebind $MOD-Button2 resize
-hc mousebind $MOD-Button3 zoom
 
-# colors
-hc set frame_bg_transparent 0
-hc set frame_border_width 0
-hc set window_border_width 16
-hc set window_border_inner_color "#1E1C14"
-hc set window_border_inner_width 9
-hc set window_border_normal_color "#1E1C14"
-hc set window_border_active_color "#F9B0CB"
-hc set show_frame_decorations none
-hc set frame_gap 20
-hc set frame_active_opacity 0
-hc set frame_normal_opacity 0
-hc set frame_transparent_width 0
-hc set window_gap 0
-hc set frame_padding 0
-hc set smart_window_surroundings 0
-hc set smart_frame_surroundings 0
-hc set mouse_recenter_gap 0
-
-# multi-monitors
-hc set auto_detect_monitors 1
-hx set swap_monitors_to_get_tag 0
 
 # rules
 hc unrule -F
 hc rule focus=on
-hc rule windowtype~"_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)" floatplacement=center
-hc rule windowtype="_NET_WM_WINDOW_TYPE_DIALOG" focus=on
-hc rule windowtype~"_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK)" manage=off
-hc rule class="kitty_float" floatplacement=center floating=true focus=true
+hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' floatplacement=center
+hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
+hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK)' manage=off
+hc rule class='kitty_float' floatplacement=center floating=true focus=true
+
+
+# multi-monitors
+hc set auto_detect_monitors 1
+hx set swap_monitors_to_get_tag 0
+hc detect_monitors
+
 
 # unlock, just to be sure
 hc unlock
-
-# multi-monitors
-hc detect_monitors
 
 # initialize
 $SCRIPTS/manager.sh init
