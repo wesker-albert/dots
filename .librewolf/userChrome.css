@@ -70,9 +70,9 @@
     --short-notification-background: #0250BB;
     --short-notification-gradient: #9059FF;
     --tab-attention-icon-color: var(--lwt-tab-attention-icon-color) !important;
-    --tab-block-margin: 4px;
-    --tab-border-radius: 4px;
-    --tab-min-height: 36px;
+    --tab-block-margin: 0px !important;
+    --tab-border-radius: 20px !important;
+    --tab-min-height: 26px !important;
     --tab-shadow-max-size: 6px;
     --tabpanel-background-color: #2B2A33 !important;
     --tabs-navbar-shadow-size: none !important;
@@ -131,14 +131,31 @@
 
 #titlebar,
 #TabsToolbar,
+#navigator-toolbox-background,
 .toolbar-items {
     background-color: #1E1C14 !important;
+}
+
+#TabsToolbar {
+    margin-bottom: 10px !important;
+}
+
+#tabbrowser-arrowscrollbox{
+    --uc-layout-pack: center;
+}
+
+scrollbox[orient="horizontal"]{
+    -moz-box-pack: var(--uc-layout-pack, initial);
 }
 
 .titlebar-buttonbox-container,
 .titlebar-spacer[type="pre-tabs"],
 .titlebar-spacer[type="post-tabs"] {
     display: none !important;
+}
+
+#navigator-toolbox {
+    margin-bottom: 5px !important;
 }
 
 findbar,
@@ -204,6 +221,10 @@ panelmultview,
 :is(popup, menupopup, panel, panelmultiview, .panel-subview-body) :is(menuitem, menu, .subviewbutton, toolbarbutton):not(#appMenu-fxa-status2):hover {
     background-color: #1E1C14 !important;
     color: #B5BD68 !important;
+}
+
+.tabbrowser-tab {
+    max-height: 26px !important;
 }
 
 .tabbrowser-tab:not([selected="true"]) :is(.tab-background, .tab-text) {

@@ -10,16 +10,19 @@ SCRIPTS="$HOME/.config/herbstluftwm/kohi/scripts"
 # mod key
 MOD=Mod4
 
-hc emit_hook reload
+# floating terminal bootstrap
+KITTY_FLOAT="--class kitty_float -o remember_window_size=n"
+KITTY_WIDTH="-o initial_window_width"
+KITTY_HEIGHT="-o initial_window_height"
 
-hc pad 0 12 0 0
+hc emit_hook reload
 
 # remove all existing keybindings
 hc keyunbind --all
 
 # tags
-TAG_NAMES=( "WEB" "DEV" "FILES" "SOCIAL" "MEDIA" )
-TAG_KEYS=( {1..5} 0 )
+TAG_NAMES=( "1" "2" "3" "4" )
+TAG_KEYS=( {1..4} 0 )
 
 hc rename default "${TAG_NAMES[0]}" || true
 for i in ${!TAG_NAMES[@]} ; do
@@ -46,6 +49,7 @@ hc keybind $MOD-Shift-t spawn gksu thunar
 hc keybind $MOD-c spawn kitty
 hc keybind $MOD-Shift-c spawn rofi -show drun -columns 2 -fullscreen
 hc keybind $MOD-w spawn kitty weechat
+hc keybind $MOD-m spawn kitty $KITTY_FLOAT $KITTY_WIDTH=82c $KITTY_HEIGHT=35c bash $SCRIPTS/commands.sh spawn_mpv
 
 # layouting
 hc keybind $MOD-Delete remove
@@ -89,13 +93,14 @@ hc mousebind $MOD-Button2 resize
 hc mousebind $MOD-Button3 zoom
 
 # colors
-hc set frame_bg_transparent 1
+hc set frame_bg_transparent 0
 hc set frame_border_width 0
-hc set window_border_width 2
-hc set window_border_inner_width 0
-hc set window_border_normal_color "#242119"
-hc set window_border_active_color "#8E7B6B"
-hc set always_show_frame 0
+hc set window_border_width 16
+hc set window_border_inner_color "#1E1C14"
+hc set window_border_inner_width 9
+hc set window_border_normal_color "#1E1C14"
+hc set window_border_active_color "#F9B0CB"
+hc set show_frame_decorations none
 hc set frame_gap 20
 hc set frame_active_opacity 0
 hc set frame_normal_opacity 0

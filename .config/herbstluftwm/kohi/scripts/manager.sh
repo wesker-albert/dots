@@ -5,6 +5,10 @@ function autostart() {
         /usr/libexec/at-spi-bus-launcher --launch-immediately &
     fi
 
+    if ! pidof -x picom; then
+        picom &
+    fi
+
     if ! pidof -x blueman-applet; then
         blueman-start &
     fi
