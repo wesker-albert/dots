@@ -140,17 +140,14 @@
     margin-bottom: 10px !important;
 }
 
-#tabbrowser-arrowscrollbox{
-    --uc-layout-pack: center;
-}
-
 scrollbox[orient="horizontal"]{
-    -moz-box-pack: var(--uc-layout-pack, initial);
+    justify-content: center !important;
 }
 
 .titlebar-buttonbox-container,
 .titlebar-spacer[type="pre-tabs"],
-.titlebar-spacer[type="post-tabs"] {
+.titlebar-spacer[type="post-tabs"],
+#alltabs-button {
     display: none !important;
 }
 

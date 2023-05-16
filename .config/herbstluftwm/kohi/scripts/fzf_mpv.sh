@@ -1,7 +1,5 @@
 #!/bin/bash
 
-FZF_DEFAULT_OPTS="--prompt 'SELECT A VIDEO: ' --header ' ' --pointer '->' --color 'bg+:8,gutter:-1,border:8,pointer:2,prompt:1'"
-
 function _get_local_file_info() {
     echo 'printf "$(tput setaf 6)%s$(tput sgr0)\n" $(ffprobe -v error -select_streams v:0 -show_entries format_tags=title -of default=noprint_wrappers=1:nokey=1 {})'
     echo 'printf "$(tput setaf 4)Duration   $(tput setaf 3)%s$(tput sgr0)\n" $(ffprobe -v error -select_streams v:0 -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 -sexagesimal {} | sed "s/\..*//")'
@@ -47,6 +45,6 @@ function search_youtube() {
     exec nohup mpv --ytdl=no $YTFZF_EXEC
 }
 
-export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"
+export FZF_DEFAULT_OPTS="--prompt 'SELECT A VIDEO: ' --header ' ' --pointer '->' --color 'bg+:8,gutter:-1,border:8,pointer:2,prompt:1'"
 
 $1
