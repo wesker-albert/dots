@@ -5,7 +5,7 @@ function hc() {
 }
 
 # scripts
-SCRIPTS="$HOME/.config/herbstluftwm/kohi/scripts"
+SCRIPTS="$HOME/.config/herbstluftwm/keki/scripts"
 
 # mod key
 MOD=Mod4

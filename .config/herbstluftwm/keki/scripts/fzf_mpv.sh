@@ -9,7 +9,7 @@ function _get_local_file_info() {
 }
 
 function _get_local_file_thumbnail() {
-    echo "ffmpegthumbnailer -s 0 -i {} -o /tmp/fzf-thumb.png && tupimage --force-upload --less-diacritics --fzf /tmp/fzf-thumb.png"
+    echo 'ffmpegthumbnailer -s 0 -i {} -o /tmp/fzf-thumb.png && tupimage --force-upload --less-diacritics --fzf /tmp/fzf-thumb.png'
 }
 
 function search_local() {
@@ -40,7 +40,8 @@ function search_youtube() {
         --preview-side=right \
         --thumbnail-quality=maxresdefault \
         --ii=https://invidious.snopyta.org \
-        -I L)
+        -I L) \
+        || return
 
     exec nohup mpv --ytdl=no $YTFZF_EXEC
 }
