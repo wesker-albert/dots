@@ -1,0 +1,89 @@
+{
+    "activitusbar.inactiveColour": "#DDDDDDAA",
+    "breadcrumbs.enabled": false,
+    "breadcrumbs.filePath": "off",
+    "coverage-gutters.highlightdark": "#909d6210",
+    "coverage-gutters.highlightlight": "#909d6210",
+    "coverage-gutters.noHighlightDark": "#bb565320",
+    "coverage-gutters.noHighlightLight": "#bb565320",
+    "coverage-gutters.partialHighlightDark": "#eac17920",
+    "coverage-gutters.partialHighlightLight": "#eac17920",
+    "coverage-gutters.showGutterCoverage": false,
+    "coverage-gutters.showLineCoverage": true,
+    "debug.toolBarLocation": "docked",
+    "editor.fontFamily": "'AudimatMono Nerd Font'",
+    "editor.hover.delay": 600,
+    "editor.largeFileOptimizations": true,
+    "editor.minimap.enabled": false,
+    "editor.quickSuggestionsDelay": 600,
+    "editor.rulers": [
+        88
+    ],
+    "editor.suggestSelection": "first",
+    "editor.unicodeHighlight.nonBasicASCII": false,
+    "errorLens.borderRadius": "1px",
+    "errorLens.delay": 1500,
+    "errorLens.enabledDiagnosticLevels": [
+        "error",
+        "warning",
+        "info",
+        "hint"
+    ],
+    "errorLens.exclude": [
+        "\"_.+\" is not accessed"
+    ],
+    "errorLens.fontStyleItalic": true,
+    "errorLens.messageBackgroundMode": "message",
+    "errorLens.messageTemplate": " $message ",
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "extensions.ignoreRecommendations": true,
+    "files.associations": {
+        ".Xresources": "plaintext"
+    },
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true,
+    "git.openRepositoryInParentFolders": "always",
+    "gitlens.advanced.messages": {
+        "suppressLineUncommittedWarning": true
+    },
+    "gitlens.currentLine.enabled": false,
+    "gitlens.gitCommands.skipConfirmations": [
+        "fetch:command",
+        "stash-push:command",
+        "switch:command"
+    ],
+    "security.workspace.trust.banner": "always",
+    "security.workspace.trust.emptyWindow": false,
+    "security.workspace.trust.startupPrompt": "always",
+    "security.workspace.trust.untrustedFiles": "open",
+    "telemetry.telemetryLevel": "off",
+    "terminal.integrated.customGlyphs": false,
+    "terminal.integrated.drawBoldTextInBrightColors": false,
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "terminal.integrated.fontFamily": "'AudimatMono Nerd Font'",
+    "terminal.integrated.tabs.location": "left",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "window.customMenuBarAltFocus": false,
+    "window.menuBarVisibility": "toggle",
+    "window.zoomLevel": 1,
+    "workbench.activityBar.visible": false,
+    "workbench.colorCustomizations": {
+        "errorLens.errorForeground": "#e16763",
+        "errorLens.errorMessageBackground": "#bb565350",
+        "errorLens.hintForeground": "#8cdcd8",
+        "errorLens.hintMessageBackground": "#8cdcd850",
+        "errorLens.infoForeground": "#7da9c7",
+        "errorLens.infoMessageBackground": "#7da9c750",
+        "errorLens.warningForeground": "#eac179",
+        "errorLens.warningMessageBackground": "#eac17950"
+    },
+    "workbench.colorTheme": "Kohi",
+    "workbench.editor.pinnedTabSizing": "compact",
+    "workbench.editor.showTabs": true,
+    "workbench.iconTheme": "gruvbox-material-icon-theme",
+    "workbench.productIconTheme": "material-product-icons",
+    "workbench.startupEditor": "none",
+    "workbench.tips.enabled": false
+}
