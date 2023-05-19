@@ -1,68 +1,35 @@
 #!/bin/bash
 
 function autostart() {
-    if ! pidof -x at-spi-bus-launcher; then
-        /usr/libexec/at-spi-bus-launcher --launch-immediately &
-    fi
+    nitrogen --restore &
 
-    if ! pidof -x picom; then
-        picom &
-    fi
-
-    if ! pidof -x blueman-applet; then
-        blueman-start &
-    fi
-
-    if ! pidof -x fbxkb; then
-        fbxkb-start &
-    fi
-
-    if ! pidof -x polkit-gnome-authentication-agent-1; then
-        /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
-    fi
-
-    if ! pidof -x pulseaudio; then
-        start-pulseaudio-x11 &
-    fi
-
-    if ! pidof -x xfce4-power-manager; then
-        xfce4-power-manager &
-    fi
+    [[ -z $(pidof -x at-spi-bus-launcher) ]] && /usr/libexec/at-spi-bus-launcher --launch-immediately &
+    [[ -z $(pidof -x picom) ]] && picom &
+    [[ -z $(pidof -x blueman-applet) ]] && blueman-start &
+    [[ -z $(pidof -x fbxkb) ]] && fbxkb-start &
+    [[ -z $(pidof -x polkit-gnome-authentication-agent-1) ]] && /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+    [[ -z $(pidof -x pulseaudio) ]] && start-pulseaudio-x11 &
+    [[ -z $(pidof -x xfce4-power-manager) ]] && xfce4-power-manager &
 
     restore-software-brightness &
 
-    if ! pidof -x light-locker; then
-        light-locker &
-    fi
+    [[ -z $(pidof -x light-locker) ]] && light-locker &
 
     xdg-user-dirs-gtk-update &
 
-    if ! pidof -x xfce4-notifyd; then
-        xfce4-notifyd-start &
-    fi
-
-    if ! pidof -x xfsettingsd; then
-        xfsettingsd &
-    fi
-
-    if ! pidof -x xfce-superkey; then
-        xfce-superkey &
-    fi
-
-    if ! pidof -x gnome-keyring-daemon; then
-        gnome-keyring-daemon --start --components=secrets &
-    fi
+    [[ -z $(pidof -x xfce4-notifyd) ]] && xfce4-notifyd-start &
+    [[ -z $(pidof -x xfsettingsd) ]] && xfsettingsd &
+    [[ -z $(pidof -x xfce-superkey) ]] && xfce-superkey &
+    [[ -z $(pidof -x gnome-keyring-daemon) ]] && gnome-keyring-daemon --start --components=secrets &
 
     sleep 5s
 
-    if ! pidof -x aria2c; then
+    if [[ -z $(pidof -x aria2c) ]]; then
         aria2c --conf-path=$HOME/.config/aria2/aria2.conf --rpc-secret=$(secret-tool lookup service aria2) &
-        notify-send --icon='filesave' 'aria2' 'Session has started'
+        notify-send --icon='filesave' 'aria2' 'Download management session has started'
     fi
 
-    if ! pidof -x volumeicon; then
-        volumeicon &
-    fi
+    [[ -z $(pidof -x volumeicon) ]] && volumeicon &
 }
 
 function reload() {
