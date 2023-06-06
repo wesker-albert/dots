@@ -23,24 +23,32 @@ hc keyunbind --all
 
 
 # a e s t h e t i c s
-hc set frame_active_opacity 0
-hc set frame_bg_transparent 0
-hc set frame_border_width 0
-hc set frame_gap 20
-hc set frame_normal_opacity 0
-hc set frame_padding 0
-hc set frame_transparent_width 0
-hc set mouse_recenter_gap 0
-hc set show_frame_decorations none
-hc set smart_frame_surroundings 0
-hc set smart_window_surroundings 0
-hc set window_border_active_color '#F9B0CB'
-hc set window_border_inner_color '#1E1C14'
-hc set window_border_inner_width 9
-hc set window_border_normal_color '#1E1C14'
-hc set window_border_width 14
-hc set window_gap 0
+hc set frame_active_opacity             0
+hc set frame_bg_transparent             0
+hc set frame_border_width               0
+hc set frame_gap                        20
+hc set frame_normal_opacity             0
+hc set frame_padding                    0
+hc set frame_transparent_width          0
+hc set mouse_recenter_gap               0
+hc set show_frame_decorations           none
+hc set smart_frame_surroundings         0
+hc set smart_window_surroundings        0
+hc set window_gap                       0
 
+hc attr theme.background_color          '#1E1C14'
+hc attr theme.border_width              14
+hc attr theme.color                     '#1E1C14'
+hc attr theme.inner_color               '#1E1C14'
+hc attr theme.inner_width               9
+hc attr theme.outer_color               '#1E1C14'
+hc attr theme.outer_width               3
+hc attr theme.padding_bottom            1
+hc attr theme.padding_left              0
+hc attr theme.padding_top               4
+hc attr theme.active.background_color   '#FF0000'
+hc attr theme.active.color              '#F9B0CB'
+hc attr theme.active.inner_width        11
 
 # tags
 TAG_NAMES=( '1' '2' '3' '4' )
@@ -58,61 +66,61 @@ done
 
 
 # keybindings
-hc keybind $MOD-c spawn kitty
-hc keybind $MOD-f spawn /usr/bin/flatpak run --branch=stable --arch=x86_64 --command=/app/bin/run.sh --file-forwarding io.freetubeapp.FreeTube @@u %u @@
-hc keybind $MOD-i spawn librewolf
-hc keybind $MOD-m spawn kitty $KITTY_FLOAT $KITTY_WIDTH=100c $KITTY_HEIGHT=26c bash $SCRIPTS/fzf_mpv.sh search_local
-hc keybind $MOD-s spawn gksu synaptic
-hc keybind $MOD-Shift-c spawn rofi -show drun
-hc keybind $MOD-Shift-f spawn catfish --path=/
-hc keybind $MOD-Shift-m spawn kitty $KITTY_FLOAT $KITTY_WIDTH=125c $KITTY_HEIGHT=26c bash $SCRIPTS/fzf_mpv.sh search_youtube
-hc keybind $MOD-Shift-q spawn $SCRIPTS/rofi-power-menu.sh
-hc keybind $MOD-Shift-r spawn $SCRIPTS/manager.sh reload
-hc keybind $MOD-Shift-t spawn gksu thunar
-hc keybind $MOD-t spawn thunar
-hc keybind $MOD-v spawn code --unity-launch
-hc keybind $MOD-w spawn kitty weechat
+hc keybind $MOD-c                   spawn kitty
+hc keybind $MOD-f                   spawn /usr/bin/flatpak run --branch=stable --arch=x86_64 --command=/app/bin/run.sh --file-forwarding io.freetubeapp.FreeTube @@u %u @@
+hc keybind $MOD-i                   spawn librewolf
+hc keybind $MOD-m                   spawn kitty $KITTY_FLOAT $KITTY_WIDTH=100c $KITTY_HEIGHT=26c bash $SCRIPTS/fzf_mpv.sh search_local
+hc keybind $MOD-s                   spawn gksu synaptic
+hc keybind $MOD-Shift-c             spawn rofi -show drun
+hc keybind $MOD-Shift-f             spawn catfish --path=/
+hc keybind $MOD-Shift-m             spawn kitty $KITTY_FLOAT $KITTY_WIDTH=125c $KITTY_HEIGHT=26c bash $SCRIPTS/fzf_mpv.sh search_youtube
+hc keybind $MOD-Shift-q             spawn $SCRIPTS/rofi-power-menu.sh
+hc keybind $MOD-Shift-r             spawn $SCRIPTS/manager.sh reload
+hc keybind $MOD-Shift-t             spawn gksu thunar
+hc keybind $MOD-t                   spawn thunar
+hc keybind $MOD-v                   spawn code --unity-launch
+hc keybind $MOD-w                   spawn kitty weechat
 
 # fn keys
-hc keybind Print spawn $SCRIPTS/screenshot.sh current_monitor
-hc keybind $MOD-Print spawn $SCRIPTS/screenshot.sh current_window
+hc keybind Print                    spawn $SCRIPTS/screenshot.sh current_monitor
+hc keybind $MOD-Print               spawn $SCRIPTS/screenshot.sh current_window
 
 # frame: control
-hc keybind $MOD-Delete remove
+hc keybind $MOD-Delete              remove
 
 # frame: splitting
 SPLIT_SIZE=0.5
-hc keybind $MOD-Alt-Down split bottom $SPLIT_SIZE
-hc keybind $MOD-Alt-Left split left $SPLIT_SIZE
-hc keybind $MOD-Alt-Right split right $SPLIT_SIZE
-hc keybind $MOD-Alt-Up split top $SPLIT_SIZE
+hc keybind $MOD-Alt-Down            split bottom $SPLIT_SIZE
+hc keybind $MOD-Alt-Left            split left $SPLIT_SIZE
+hc keybind $MOD-Alt-Right           split right $SPLIT_SIZE
+hc keybind $MOD-Alt-Up              split top $SPLIT_SIZE
 
 # window: control
-hc keybind $MOD-End close
-hc keybind $MOD-F11 fullscreen toggle
+hc keybind $MOD-End                 close
+hc keybind $MOD-F11                 fullscreen toggle
 
 # window: resizing
-RESIZE_STEP=0.025
-hc keybind $MOD-Control-Down resize down +$RESIZE_STEP
-hc keybind $MOD-Control-Left resize left +$RESIZE_STEP
-hc keybind $MOD-Control-Right resize right +$RESIZE_STEP
-hc keybind $MOD-Control-Up resize up +$RESIZE_STEP
+RESIZE_STEP=0.015
+hc keybind $MOD-Control-Down        resize down +$RESIZE_STEP
+hc keybind $MOD-Control-Left        resize left +$RESIZE_STEP
+hc keybind $MOD-Control-Right       resize right +$RESIZE_STEP
+hc keybind $MOD-Control-Up          resize up +$RESIZE_STEP
 
 # window: focus
-hc keybind $MOD-Down focus down
-hc keybind $MOD-Left focus left
-hc keybind $MOD-Right focus right
-hc keybind $MOD-Shift-Down shift down
-hc keybind $MOD-Shift-Left shift left
-hc keybind $MOD-Shift-Right shift right
-hc keybind $MOD-Shift-Up shift up
-hc keybind $MOD-Up focus up
+hc keybind $MOD-Down                focus down
+hc keybind $MOD-Left                focus left
+hc keybind $MOD-Right               focus right
+hc keybind $MOD-Shift-Down          shift down
+hc keybind $MOD-Shift-Left          shift left
+hc keybind $MOD-Shift-Right         shift right
+hc keybind $MOD-Shift-Up            shift up
+hc keybind $MOD-Up                  focus up
 
 # window: monitor shift+focus
-hc keybind $MOD-Control-Alt-Down chain , lock , shift_to_monitor -d , focus_monitor -d , unlock
-hc keybind $MOD-Control-Alt-Left chain , lock , shift_to_monitor -l , focus_monitor -l , unlock
-hc keybind $MOD-Control-Alt-Right chain , lock , shift_to_monitor -r , focus_monitor -r , unlock
-hc keybind $MOD-Control-Alt-Up chain , lock , shift_to_monitor -u , focus_monitor -u , unlock
+hc keybind $MOD-Control-Alt-Down    chain , lock , shift_to_monitor -d , focus_monitor -d , unlock
+hc keybind $MOD-Control-Alt-Left    chain , lock , shift_to_monitor -l , focus_monitor -l , unlock
+hc keybind $MOD-Control-Alt-Right   chain , lock , shift_to_monitor -r , focus_monitor -r , unlock
+hc keybind $MOD-Control-Alt-Up      chain , lock , shift_to_monitor -u , focus_monitor -u , unlock
 
 
 # mouse
@@ -129,7 +137,7 @@ hc rule class='kitty_float' floatplacement=center floating=true focus=true
 
 
 # multi-monitors
-hc set auto_detect_monitors 1
+hc set auto_detect_monitors     1
 hx set swap_monitors_to_get_tag 0
 hc detect_monitors
 
