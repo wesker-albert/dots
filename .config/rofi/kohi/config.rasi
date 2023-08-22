@@ -12,9 +12,9 @@
 window {
     anchor:             center;
     background-color:   #1E1C14;
-    border-color:       #90D3CC;
+    border-color:       #8C9440;
     border-radius:      @--border-radius;
-    border:             5px;
+    border:             4px;
     children:           [ inputbar, listview ];
     location:           center;
     padding:            20px;

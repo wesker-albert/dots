@@ -1,8 +1,6 @@
 #!/bin/bash
 
 function autostart() {
-    nitrogen --restore &
-
     [[ -z $(pidof -x at-spi-bus-launcher) ]] && /usr/libexec/at-spi-bus-launcher --launch-immediately &
     [[ -z $(pidof -x picom) ]] && picom &
     [[ -z $(pidof -x blueman-applet) ]] && blueman-start &
@@ -21,6 +19,8 @@ function autostart() {
     [[ -z $(pidof -x xfsettingsd) ]] && xfsettingsd &
     [[ -z $(pidof -x xfce-superkey) ]] && xfce-superkey &
     [[ -z $(pidof -x gnome-keyring-daemon) ]] && gnome-keyring-daemon --start --components=secrets &
+
+    nitrogen --restore &
 
     sleep 5s
 
@@ -41,6 +41,7 @@ function reload() {
 function init() {
     polybar main &
     polybar secondary &
+    polybar tertiary &
 
     autostart
 }
