@@ -43,9 +43,10 @@ hc attr theme.inner_color               '#1E1C14'
 hc attr theme.inner_width               9
 hc attr theme.outer_color               '#1E1C14'
 hc attr theme.outer_width               3
-hc attr theme.padding_bottom            1
-hc attr theme.padding_left              0
-hc attr theme.padding_top               4
+hc attr theme.padding_bottom            2
+hc attr theme.padding_left              2
+hc attr theme.padding_top               2
+hc attr theme.padding_right             2
 hc attr theme.active.background_color   '#1E1C14'
 hc attr theme.active.color              '#8C9440'
 hc attr theme.active.inner_width        11
