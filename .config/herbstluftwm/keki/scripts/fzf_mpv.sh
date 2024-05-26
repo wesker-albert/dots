@@ -12,7 +12,7 @@ function _round_up() {
 }
 
 function _get_video_watch_percentage() {
-    FILE_HASH=$(echo -n $1 | md5sum | tr '[:lower:]' '[:upper:]' | sed "s/  -.*//")
+    FILE_HASH=$(echo -n "$@" | md5sum | tr '[:lower:]' '[:upper:]' | sed "s/  -.*//")
     WATCH_LATER_FILE="$HOME/.config/mpv/watch_later/$FILE_HASH"
 
     [ ! -f "$WATCH_LATER_FILE" ] && return
@@ -23,11 +23,11 @@ function _get_video_watch_percentage() {
 }
 
 function get_video_info() {
-    VIDEO_STREAM=$(ffprobe -v error -select_streams v:0 -show_entries format_tags=title -show_entries format=duration -show_entries stream=width,height,bit_rate -of json $1)
-    AUDIO_STREAM=$(ffprobe -v error -select_streams a:0 -show_entries stream=codec_name,sample_rate,channel_layout -of json $1)
+    VIDEO_STREAM=$(ffprobe -v error -select_streams v:0 -show_entries format_tags=title -show_entries format=duration -show_entries stream=width,height,bit_rate -of json "$@")
+    AUDIO_STREAM=$(ffprobe -v error -select_streams a:0 -show_entries stream=codec_name,sample_rate,channel_layout -of json "$@")
 
     DURATION=$(_round_up $(_get_json_val "$VIDEO_STREAM" '.format.duration') 0)
-    WATCH_PERCENTAGE=$(_get_video_watch_percentage $1 $DURATION)
+    WATCH_PERCENTAGE=$(_get_video_watch_percentage "$@" $DURATION)
     [ -n "$WATCH_PERCENTAGE" ] && WATCHED=" ($WATCH_PERCENTAGE watched)"
 
     TITLE=$(_get_json_val "$VIDEO_STREAM" '.format.tags.title')
@@ -70,7 +70,7 @@ function search_local() {
         --with-nth -1) \
         || return
 
-    exec nohup mpv $FZF_EXEC
+    exec nohup mpv "$FZF_EXEC"
 }
 
 function search_youtube() {
