@@ -1,7 +1,7 @@
 #!/bin/sh
 
 _get_connection_name() {
-    nmcli connection show | grep 'proton-vpn' | awk '{print $1;}'
+    nmcli connection show --active | grep 'proton-' | awk '{print $1;}'
 }
 
 get_active_connection() {

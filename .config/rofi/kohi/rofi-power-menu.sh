@@ -13,7 +13,7 @@ set -e
 set -u
 
 # All supported choices
-all=(shutdown reboot lockscreen switchuser)
+all=(shutdown reboot lockscreen)
 
 # By default, show all (i.e., just copy the array)
 show=("${all[@]}")
@@ -43,8 +43,8 @@ actions[switchuser]="dm-tool switch-to-greeter"
 actions[logout]=""
 actions[suspend]=""
 actions[hibernate]=""
-actions[reboot]="sudo /sbin/reboot"
-actions[shutdown]="sudo /sbin/poweroff"
+actions[reboot]="systemctl reboot"
+actions[shutdown]="systemctl poweroff"
 
 # By default, ask for confirmation for actions that are irreversible
 confirmations=(reboot shutdown logout)

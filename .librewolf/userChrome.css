@@ -136,6 +136,10 @@
     background-color: #1E1C14 !important;
 }
 
+#nav-bar {
+    border-top: none !important;
+}
+
 #TabsToolbar {
     margin-bottom: 10px !important;
 }
@@ -152,7 +156,7 @@ scrollbox[orient="horizontal"]{
 }
 
 #navigator-toolbox {
-    margin-bottom: 5px !important;
+    border-bottom-width: 5.01px !important;
 }
 
 findbar,
