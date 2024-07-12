@@ -28,8 +28,4 @@ get_update_count() {
     echo $UPDATE_COUNT
 }
 
-spawn_notifier() {
-    python3 /usr/lib/apt-notifier/modules/aptnotifier_viewandupgrade.py &
-}
-
 $1

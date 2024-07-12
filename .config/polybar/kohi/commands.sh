@@ -14,4 +14,8 @@ function spawn_nmtui() {
     kitty $(echo $KITTY_BOOTSTRAP) -o initial_window_width=82c -o initial_window_height=35c nmtui
 }
 
+function spawn_upgrade() {
+    kitty --hold $(echo $KITTY_BOOTSTRAP) -o initial_window_width=100c -o initial_window_height=35c sudo apt upgrade
+}
+
 $1
