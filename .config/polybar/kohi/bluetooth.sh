@@ -64,7 +64,6 @@ get_connected_devices() {
     done
 
     echo "$OUTPUT"
-    
 }
 
 $1
