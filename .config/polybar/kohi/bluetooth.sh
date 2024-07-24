@@ -22,6 +22,8 @@ _get_icon() {
         echo ""
     elif [ "$ICON" = "audio-headset" ]; then
         echo ""
+    elif [ "$ICON" = "input-gaming" ]; then
+        echo ""
     else
         echo ""
     fi
@@ -38,8 +40,7 @@ get_connected_devices() {
     INDEX=0
     OUTPUT=""
 
-    for UUID in "${UUIDS[@]}"
-    do
+    for UUID in "${UUIDS[@]}"; do
         ICON=$(_get_icon $UUID)
         ALIAS=$(_get_alias $UUID)
         BATTERY_PERCENT=$(_get_battery_percent $UUID)
