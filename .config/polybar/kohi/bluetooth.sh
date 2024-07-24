@@ -18,15 +18,20 @@ _get_icon() {
     | grep -e "Icon" \
     | cut -f2- -d" ")
 
-    if [ "$ICON" = "audio-headphones" ]; then
-        echo ""
-    elif [ "$ICON" = "audio-headset" ]; then
-        echo ""
-    elif [ "$ICON" = "input-gaming" ]; then
-        echo ""
-    else
-        echo ""
-    fi
+    case $ICON in
+        audio-headphones)
+            echo ""
+            ;;
+        audio-headset)
+            echo ""
+            ;;
+        input-gaming)
+            echo ""
+            ;;
+        *)
+            echo ""
+            ;;
+    esac
 }
 
 get_connected_devices() {
