@@ -7,6 +7,7 @@ I typically just keep this repo cloned at `~/Projects/dots/` and then use symlin
 
 This isn't an exhaustive list, but here are some of the tools employed by or referenced within my dots:
 
+- amfora
 - aria2c
 - deluge
 - fzf
@@ -20,6 +21,8 @@ This isn't an exhaustive list, but here are some of the tools employed by or ref
 - polybar
 - rofi
 - sabnzbd
+- tupimage
 - weechat
+- wireguard
 - yt-dlp
 - ytfzf

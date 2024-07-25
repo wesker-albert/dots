@@ -18,10 +18,10 @@ function autostart() {
     sleep 5s
 
     if [[ -z $(pidof -x aria2c) ]]; then
-        aria2c --conf-path=$HOME/.config/aria2/aria2.conf --rpc-secret=$(secret-tool lookup service aria2) &
+        aria2c --conf-path="$HOME/.config/aria2/aria2.conf" --rpc-secret="$(secret-tool lookup service aria2)" &
         busybox httpd -p 127.0.0.1:8090 -h /home/wesker/.ariang/ &
         ARIA2_VERSION=$(aria2c --version | head -n 1 | awk '{print $3;}')
-        notify-send --icon='filesave' 'aria2' "aria2 $ARIA2_VERSION started"
+        notify-send --icon="filesave" "aria2" "aria2 $ARIA2_VERSION started"
     fi
 
     [[ -z $(pidof -x sabnzbdplus) ]] && sabnzbdplus &
@@ -32,7 +32,7 @@ function autostart() {
 function reload() {
     killall -w -q polybar
 
-    herbstclient reload 
+    herbstclient reload
 }
 
 function init() {

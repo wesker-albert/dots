@@ -1,4 +1,5 @@
 #!/bin/bash
+# shellcheck disable=SC2016
 
 function all_monitors() {
     scrot ~/Pictures/Screenshots/%Y-%m-%d_%H-%M-%S.png -e 'gthumb $f' -q 100
@@ -6,8 +7,7 @@ function all_monitors() {
 
 function current_monitor() {
     CURRENT_MONITOR=$(herbstclient list_monitors | grep 'FOCUS' | cut -c1-1)
-    
-    scrot ~/Pictures/Screenshots/%Y-%m-%d_%H-%M-%S.png -e 'gthumb $f' -q 100 -M $CURRENT_MONITOR
+    scrot ~/Pictures/Screenshots/%Y-%m-%d_%H-%M-%S.png -e 'gthumb $f' -q 100 -M "$CURRENT_MONITOR"
 }
 
 function current_window() {

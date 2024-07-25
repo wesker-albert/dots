@@ -1,36 +1,66 @@
 #!/bin/bash
 
 _get_alias() {
-    bluetoothctl info $1 \
-    | grep -e "Alias" \
-    | cut -f2- -d" "
+    echo "$1" |
+        grep -e "Alias" |
+        cut -f2- -d" "
 }
 
 _get_battery_percent() {
-    bluetoothctl info $1 \
-    | grep -e "Battery Percentage" \
-    | cut -d "(" -f2 \
-    | cut -d ")" -f1
+    echo "$1" |
+        grep -e "Battery Percentage" |
+        cut -d "(" -f2 |
+        cut -d ")" -f1
 }
 
 _get_icon() {
-    ICON=$(bluetoothctl info $1 \
-    | grep -e "Icon" \
-    | cut -f2- -d" ")
+    ICON=$(echo "$1" |
+        grep -e "Icon" |
+        cut -f2- -d" ")
 
     case $ICON in
-        audio-headphones)
-            echo ""
-            ;;
-        audio-headset)
-            echo ""
-            ;;
-        input-gaming)
-            echo ""
-            ;;
-        *)
-            echo ""
-            ;;
+    audio-headphones)
+        echo ""
+        ;;
+    audio-headset)
+        echo ""
+        ;;
+    input-gaming)
+        echo ""
+        ;;
+    input-keyboard)
+        echo ""
+        ;;
+    input-mouse)
+        echo ""
+        ;;
+    input-tablet)
+        echo ""
+        ;;
+    phone)
+        echo ""
+        ;;
+    computer)
+        echo ""
+        ;;
+    printer)
+        echo "朗"
+        ;;
+    scanner)
+        echo "󰿁"
+        ;;
+    camera-photo)
+        echo ""
+        ;;
+    camera-video)
+        echo ""
+        ;;
+    video-display)
+        echo ""
+        ;;
+    unknown | *)
+        echo ""
+        ;;
     esac
 }
 
@@ -41,14 +71,17 @@ get_connected_devices() {
         exit 1
     fi
 
-    UUIDS=($UUIDS)
+    mapfile -t UUIDS <<<"$UUIDS"
+
     INDEX=0
     OUTPUT=""
 
     for UUID in "${UUIDS[@]}"; do
-        ICON=$(_get_icon $UUID)
-        ALIAS=$(_get_alias $UUID)
-        BATTERY_PERCENT=$(_get_battery_percent $UUID)
+        DEVICE=$(bluetoothctl info "$UUID")
+
+        ICON=$(_get_icon "$DEVICE")
+        ALIAS=$(_get_alias "$DEVICE")
+        BATTERY_PERCENT=$(_get_battery_percent "$DEVICE")
 
         if [ -z "$BATTERY_PERCENT" ]; then
             exit 1
@@ -60,7 +93,7 @@ get_connected_devices() {
 
         OUTPUT+="%{F#8E7B6B}$ICON%{F-} %{T3}$ALIAS ($BATTERY_PERCENT%)%{T-}"
 
-        ((INDEX=INDEX+1))
+        ((INDEX = INDEX + 1))
     done
 
     echo "$OUTPUT"

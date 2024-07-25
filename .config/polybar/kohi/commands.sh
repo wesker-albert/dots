@@ -1,21 +1,23 @@
-#!/bin/sh
+#!/bin/bash
+# shellcheck disable=SC2086
 
 KITTY_BOOTSTRAP="--class kitty_float -o remember_window_size=n"
 
-function spawn_calcurse() {
-    kitty $(echo $KITTY_BOOTSTRAP) -o initial_window_width=100c -o initial_window_height=45c calcurse
+spawn_calcurse() {
+    kitty $KITTY_BOOTSTRAP -o initial_window_width=100c -o initial_window_height=45c calcurse
 }
 
-function spawn_alsamixer() {
-    kitty $(echo $KITTY_BOOTSTRAP) -o initial_window_width=200c -o initial_window_height=35c alsamixer
+spawn_alsamixer() {
+    kitty $KITTY_BOOTSTRAP -o initial_window_width=200c -o initial_window_height=35c alsamixer
 }
 
-function spawn_nmtui() {
-    kitty $(echo $KITTY_BOOTSTRAP) -o initial_window_width=82c -o initial_window_height=35c nmtui
+spawn_nmtui() {
+    NEWT_COLORS="root=black,black;" \
+        kitty $KITTY_BOOTSTRAP -o initial_window_width=82c -o initial_window_height=35c nmtui
 }
 
-function spawn_upgrade() {
-    kitty --hold $(echo $KITTY_BOOTSTRAP) -o initial_window_width=100c -o initial_window_height=35c sudo apt upgrade
+spawn_upgrade() {
+    kitty --hold $KITTY_BOOTSTRAP -o initial_window_width=100c -o initial_window_height=35c sudo apt upgrade
 }
 
 $1
