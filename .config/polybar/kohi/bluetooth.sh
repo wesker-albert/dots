@@ -1,20 +1,20 @@
 #!/bin/bash
 
 _get_alias() {
-    echo "$1" |
+    echo "$@" |
         grep -e "Alias" |
         cut -f2- -d" "
 }
 
 _get_battery_percent() {
-    echo "$1" |
+    echo "$@" |
         grep -e "Battery Percentage" |
         cut -d "(" -f2 |
         cut -d ")" -f1
 }
 
 _get_icon() {
-    ICON=$(echo "$1" |
+    ICON=$(echo "$@" |
         grep -e "Icon" |
         cut -f2- -d" ")
 
@@ -99,4 +99,4 @@ get_connected_devices() {
     echo "$OUTPUT"
 }
 
-$1
+"$@"
