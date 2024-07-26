@@ -1,6 +1,8 @@
 #!/bin/bash
 # shellcheck disable=SC2086
 
+set -eu -o pipefail
+
 KITTY_BOOTSTRAP="--class kitty_float -o remember_window_size=n"
 
 spawn_calcurse() {

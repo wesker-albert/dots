@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eu -o pipefail
+
 _get_alias() {
     echo "$@" |
         grep -e "Alias" |
@@ -56,7 +58,19 @@ _get_icon() {
         echo ""
         ;;
     video-display)
-        echo ""
+        echo "󰟴"
+        ;;
+    network-wireless)
+        echo ""
+        ;;
+    modem)
+        echo "󰩩"
+        ;;
+    audio-card)
+        echo ""
+        ;;
+    multimedia-player)
+        echo "󰽴"
         ;;
     unknown | *)
         echo ""

@@ -3,4 +3,4 @@
 WM_THEME="$HOME/.config/herbstluftwm/keki"
 
 # autostart
-$WM_THEME/autostart &
+"$WM_THEME/autostart"

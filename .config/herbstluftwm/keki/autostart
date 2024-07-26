@@ -1,7 +1,7 @@
 #!/bin/bash
 # shellcheck disable=SC2086
 
-function hc() {
+hc() {
     herbstclient "$@"
 }
 
@@ -146,7 +146,7 @@ hc rule class='kitty_float' floatplacement=center floating=true focus=true
 
 # multi-monitors
 hc set auto_detect_monitors     1
-hx set swap_monitors_to_get_tag 0
+hc set swap_monitors_to_get_tag 0
 hc detect_monitors
 
 

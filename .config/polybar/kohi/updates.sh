@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eu -o pipefail
+
 _get_list_of_upgrades() {
     LC_ALL=en_US apt-get -o 'Debug::NoLocking=true' --trivial-only -V dist-upgrade 2>/dev/null |
         sed -n '/upgraded:/,$p' |

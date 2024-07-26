@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function autostart() {
+autostart() {
     [[ -z $(pidof -x at-spi-bus-launcher) ]] && /usr/libexec/at-spi-bus-launcher --launch-immediately &
     [[ -z $(pidof -x picom) ]] && picom &
     [[ -z $(pidof -x blueman-applet) ]] && blueman-start &
@@ -29,13 +29,13 @@ function autostart() {
     [[ -z $(pidof -x volumeicon) ]] && volumeicon &
 }
 
-function reload() {
+reload() {
     killall -w -q polybar
 
     herbstclient reload
 }
 
-function init() {
+init() {
     polybar main &
     polybar secondary &
     polybar tertiary &

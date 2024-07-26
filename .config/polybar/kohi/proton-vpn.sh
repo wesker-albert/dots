@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eu -o pipefail
+
 _get_connection_name() {
     nmcli connection show --active | grep 'proton-' | awk '{print $1;}'
 }
