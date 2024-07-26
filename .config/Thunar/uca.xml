@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<submenu></submenu>
+	<unique-id>1716768478240687-1</unique-id>
+	<command>exo-open --working-directory %f --launch TerminalEmulator</command>
+	<description>Example for a custom action</description>
+	<range></range>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>emblem-symbolic-link</icon>
+	<name>Create Symlink</name>
+	<submenu></submenu>
+	<unique-id>1718151786653273-1</unique-id>
+	<command>ln -s %f &apos;(Symlink) %n&apos;</command>
+	<description>Create a symbolic link</description>
+	<range></range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>system-software-install</icon>
+	<name>Install Package</name>
+	<submenu></submenu>
+	<unique-id>1721801456326210-1</unique-id>
+	<command>pkexec gdebi-gtk %f</command>
+	<description>Open package using gdebi</description>
+	<range>*</range>
+	<patterns>*.deb</patterns>
+	<other-files/>
+</action>
+</actions>
