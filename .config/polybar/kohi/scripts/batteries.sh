@@ -1,5 +1,45 @@
 #!/bin/bash
 
+# Polybar script specifically for laptops that utilize two batteries.
+# Displays a singular, cumulative charge percentage. Also includes
+# dynamic, ramping icons, and a low battery threshold setting.
+
+# EXAMPLE CONFIG
+
+# [module/batteries]
+# type                            = custom/script
+# interval                        = 5
+
+# exec                            = batteries.sh get_batteries_status
+
+# env-RAMP_0                      = 󰁺
+# env-RAMP_1                      = 󰁻
+# env-RAMP_2                      = 󰁼
+# env-RAMP_3                      = 󰁽
+# env-RAMP_4                      = 󰁾
+# env-RAMP_5                      = 󰁿
+# env-RAMP_6                      = 󰂀
+# env-RAMP_7                      = 󰂁
+# env-RAMP_8                      = 󰂂
+# env-RAMP_9                      = 󰁹
+# env-RAMP_CHARGING_0             = 󰢜
+# env-RAMP_CHARGING_1             = 󰂆
+# env-RAMP_CHARGING_2             = 󰂇
+# env-RAMP_CHARGING_3             = 󰂈
+# env-RAMP_CHARGING_4             = 󰢝
+# env-RAMP_CHARGING_5             = 󰂉
+# env-RAMP_CHARGING_6             = 󰢞
+# env-RAMP_CHARGING_7             = 󰂊
+# env-RAMP_CHARGING_8             = 󰂋
+# env-RAMP_CHARGING_9             = 󰂅
+# env-ICON_AC                     = 
+# env-ICON_FOREGROUND             = #8E7B6B
+# env-LOW_BATTERY_THRESHOLD       = 25
+# env-ICON_LOW_BATTERY_FOREGROUND = #A54242
+
+# format                          = <label>
+# label                           = %output%
+
 set -eu -o pipefail
 
 _get_battery() {
@@ -46,54 +86,54 @@ _get_icon() {
 
     if [ "$STATE" = "charging" ]; then
         if [ "$PERCENTAGE" -gt 90 ]; then
-            ICON="󰂅"
+            ICON="$RAMP_CHARGING_9"
         elif [ "$PERCENTAGE" -gt 80 ]; then
-            ICON="󰂋"
+            ICON="$RAMP_CHARGING_8"
         elif [ "$PERCENTAGE" -gt 70 ]; then
-            ICON="󰂊"
+            ICON="$RAMP_CHARGING_7"
         elif [ "$PERCENTAGE" -gt 60 ]; then
-            ICON="󰢞"
+            ICON="$RAMP_CHARGING_6"
         elif [ "$PERCENTAGE" -gt 50 ]; then
-            ICON="󰂉"
+            ICON="$RAMP_CHARGING_5"
         elif [ "$PERCENTAGE" -gt 40 ]; then
-            ICON="󰢝"
+            ICON="$RAMP_CHARGING_4"
         elif [ "$PERCENTAGE" -gt 30 ]; then
-            ICON="󰂈"
+            ICON="$RAMP_CHARGING_3"
         elif [ "$PERCENTAGE" -gt 20 ]; then
-            ICON="󰂇"
+            ICON="$RAMP_CHARGING_2"
         elif [ "$PERCENTAGE" -gt 10 ]; then
-            ICON="󰂆"
+            ICON="$RAMP_CHARGING_1"
         else
-            ICON="󰢜"
+            ICON="$RAMP_CHARGING_0"
         fi
     else
         if [ "$PERCENTAGE" -gt 90 ]; then
-            ICON="󰁹"
+            ICON="$RAMP_9"
         elif [ "$PERCENTAGE" -gt 80 ]; then
-            ICON="󰂂"
+            ICON="$RAMP_8"
         elif [ "$PERCENTAGE" -gt 70 ]; then
-            ICON="󰂁"
+            ICON="$RAMP_7"
         elif [ "$PERCENTAGE" -gt 60 ]; then
-            ICON="󰂀"
+            ICON="$RAMP_6"
         elif [ "$PERCENTAGE" -gt 50 ]; then
-            ICON="󰁿"
+            ICON="$RAMP_5"
         elif [ "$PERCENTAGE" -gt 40 ]; then
-            ICON="󰁾"
+            ICON="$RAMP_4"
         elif [ "$PERCENTAGE" -gt 30 ]; then
-            ICON="󰁽"
+            ICON="$RAMP_3"
         elif [ "$PERCENTAGE" -gt 20 ]; then
-            ICON="󰁼"
+            ICON="$RAMP_2"
         elif [ "$PERCENTAGE" -gt 10 ]; then
-            ICON="󰁻"
+            ICON="$RAMP_1"
         else
-            ICON="󰁺"
+            ICON="$RAMP_0"
         fi
     fi
 
-    if [ "$STATE" = "discharging" ] && [ "$PERCENTAGE" -lt 25 ]; then
-        echo "%{F#A54242}$ICON%{F-}"
+    if [ "$STATE" = "discharging" ] && [ "$PERCENTAGE" -lt "$LOW_BATTERY_THRESHOLD" ]; then
+        echo "%{F$ICON_LOW_FOREGROUND}$ICON%{F-}"
     else
-        echo "%{F#8E7B6B}$ICON%{F-}"
+        echo "%{F$ICON_FOREGROUND}$ICON%{F-}"
     fi
 }
 
@@ -106,7 +146,7 @@ get_batteries_status() {
     ICON=$(_get_icon "$STATE" "$PERCENTAGE")
 
     if [ "$STATE" = "fully-charged" ]; then
-        echo "%{F#8E7B6B}%{F-}"
+        echo "%{F$ICON_FOREGROUND}$ICON_AC%{F-}"
     else
         echo "$ICON %{T3}$PERCENTAGE%%{T-}"
     fi

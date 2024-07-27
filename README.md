@@ -15,6 +15,7 @@ This isn't an exhaustive list, but here are some of the tools employed by or ref
 - kitty
 - librewolf
 - mpv
+- nmcli
 - oh-my-zsh, powerline10k
 - phetch
 - picom
@@ -25,4 +26,3 @@ This isn't an exhaustive list, but here are some of the tools employed by or ref
 - weechat
 - wireguard
 - yt-dlp
-- ytfzf

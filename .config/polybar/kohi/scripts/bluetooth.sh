@@ -1,5 +1,46 @@
 #!/bin/bash
 
+# Polybar script that displays connected bluetooth devices and their battery
+# percentage, if available. It also is capable of showing dynamic icons
+# depending on the type of device(s) connected.
+
+# EXAMPLE CONFIG
+
+# [module/bluetooth]
+# type                          = custom/script
+# interval                      = 2
+
+# exec                          = bluetooth.sh get_connected_devices
+
+# env-SEPARATOR                 = %{O10}
+# env-ICON_FOREGROUND           = #8E7B6B
+# env-ICON_AUDIO_CARD           = 󰢮
+# env-ICON_AUDIO_HEADPHONES     = 󰥰
+# env-ICON_AUDIO_HEADSET        = 
+# env-ICON_CAMERA_PHOTO         = 
+# env-ICON_CAMERA_VIDEO         = 󰞡
+# env-ICON_COMPUTER             = 󰌢
+# env-ICON_INPUT_GAMING         = 
+# env-ICON_INPUT_KEYBOARD       = 
+# env-ICON_INPUT_MOUSE          = 󰦋
+# env-ICON_INPUT_TABLET         = 
+# env-ICON_MODEM                = 󰩩
+# env-ICON_MULTIMEDIA_PLAYER    = 󰗾
+# env-ICON_NETWORK_WIRELESS     = 󰀂
+# env-ICON_PHONE                = 󰏳
+# env-ICON_PRINTER              = 朗
+# env-ICON_SCANNER              = 󰚫
+# env-ICON_VIDEO_DISPLAY        = 󰍹
+# env-ICON_DEFAULT              = 󰂱
+
+# format                        = <label>
+# format-fail                   = <label-fail>
+
+# label                         = %output%
+# label-fail                    =
+
+# click-right                   = blueman-manager
+
 set -eu -o pipefail
 
 _get_alias() {
@@ -26,58 +67,58 @@ _get_icon() {
 
     case $ICON in
     audio-headphones)
-        echo "󰥰"
+        echo "$ICON_AUDIO_HEADPHONES"
         ;;
     audio-headset)
-        echo ""
+        echo "$ICON_AUDIO_HEADSET"
         ;;
     input-gaming)
-        echo ""
+        echo "$ICON_INPUT_GAMING"
         ;;
     input-keyboard)
-        echo ""
+        echo "$ICON_INPUT_KEYBOARD"
         ;;
     input-mouse)
-        echo "󰦋"
+        echo "$ICON_INPUT_MOUSE"
         ;;
     input-tablet)
-        echo ""
+        echo "$ICON_INPUT_TABLET"
         ;;
     phone)
-        echo "󰏳"
+        echo "$ICON_PHONE"
         ;;
     computer)
-        echo "󰌢"
+        echo "$ICON_COMPUTER"
         ;;
     printer)
-        echo "朗"
+        echo "$ICON_PRINTER"
         ;;
     scanner)
-        echo "󰚫"
+        echo "$ICON_SCANNER"
         ;;
     camera-photo)
-        echo ""
+        echo "$ICON_CAMERA_PHOTO"
         ;;
     camera-video)
-        echo "󰞡"
+        echo "$ICON_CAMERA_VIDEO"
         ;;
     video-display)
-        echo "󰍹"
+        echo "$ICON_VIDEO_DISPLAY"
         ;;
     network-wireless)
-        echo "󰀂"
+        echo "$ICON_NETWORK_WIRELESS"
         ;;
     modem)
-        echo "󰩩"
+        echo "$ICON_MODEM"
         ;;
     audio-card)
-        echo "󰢮"
+        echo "$ICON_AUDIO_CARD"
         ;;
     multimedia-player)
-        echo "󰗾"
+        echo "$ICON_MULTIMEDIA_PLAYER"
         ;;
     unknown | *)
-        echo "󰂱"
+        echo "$ICON_DEFAULT"
         ;;
     esac
 }
@@ -98,10 +139,10 @@ get_connected_devices() {
         BATTERY_PERCENT=$(_get_battery_percent "$DEVICE")
 
         if [ $INDEX -ne 0 ]; then
-            OUTPUT+="%{O10}"
+            OUTPUT+="$SEPARATOR"
         fi
 
-        OUTPUT+="%{F#8E7B6B}$ICON%{F-} %{T3}$ALIAS$BATTERY_PERCENT%{T-}"
+        OUTPUT+="%{F$ICON_FOREGROUND}$ICON%{F-} %{T3}$ALIAS$BATTERY_PERCENT%{T-}"
 
         ((INDEX = INDEX + 1))
     done

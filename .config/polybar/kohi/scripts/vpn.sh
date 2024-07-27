@@ -1,6 +1,27 @@
 #!/bin/bash
 
-# set -eu -o pipefail
+# Polybar script that displays the currently connected VPN profile.
+# It is compatible with Wireguard and OpenVPN type connections, and
+# allows custom status icons.
+
+# EXAMPLE CONFIG
+
+# [module/vpn]
+# type                                = custom/script
+# interval                            = 2
+
+# exec                                = vpn.sh get_active_connection
+
+# env-ICON_CONNECTED                  = 󰦝
+# env-ICON_CONNECTED_FOREGROUND       = #8E7B6B
+# env-ICON_DISCONNECTED               = 󱦚
+# env-ICON_DISCONNECTED_FOREGROUND    = #A54242
+# env-LABEL_DISCONNECTED              = off
+# env-LABEL_DISCONNECTED_FOREGROUND   = #DAABB1
+
+# format                              = <label>
+
+# label                               = %output%
 
 _get_connection_name() {
     nmcli connection show --active |
@@ -12,21 +33,9 @@ get_active_connection() {
     NAME=$(_get_connection_name)
 
     if [ -z "$NAME" ]; then
-        echo "%{F#A54242}󱦚%{F-} %{T3}%{F#DAABB1}off%{F-}%{T-}"
+        echo "%{F$ICON_DISCONNECTED_FOREGROUND}$ICON_DISCONNECTED%{F-} %{T3}%{F$LABEL_DISCONNECTED_FOREGROUND}$LABEL_DISCONNECTED%{F-}%{T-}"
     else
-        echo "%{F#8E7B6B}󰦝%{F-} %{T3}$NAME%{T-}"
-    fi
-}
-
-toggle_connection() {
-    NAME=$(_get_connection_name)
-
-    if [ -z "$NAME" ]; then
-        nmcli connection up "$NAME"
-        notify-send --icon="changes-prevent" "VPN" "Connected to $NAME"
-    else
-        nmcli connection down "$NAME"
-        notify-send --icon="changes-allow" "VPN" "Disconnected from $NAME"
+        echo "%{F$ICON_CONNECTED_FOREGROUND}$ICON_CONNECTED%{F-} %{T3}$NAME%{T-}"
     fi
 }
 
