@@ -41,8 +41,8 @@ _get_combined_state() {
 }
 
 _get_icon() {
-    STATE=$(_get_combined_state "$1" "$2")
-    PERCENTAGE=$(_get_combined_percentage "$1" "$2")
+    STATE="$1"
+    PERCENTAGE="$2"
 
     if [ "$STATE" = "charging" ]; then
         if [ "$PERCENTAGE" -gt 90 ]; then
@@ -101,10 +101,15 @@ get_batteries_status() {
     BAT0=$(_get_battery BAT0)
     BAT1=$(_get_battery BAT1)
 
-    ICON=$(_get_icon "$BAT0" "$BAT1")
+    STATE=$(_get_combined_state "$BAT0" "$BAT1")
     PERCENTAGE=$(_get_combined_percentage "$BAT0" "$BAT1")
+    ICON=$(_get_icon "$STATE" "$PERCENTAGE")
 
-    echo "$ICON %{T3}$PERCENTAGE%%{T-}"
+    if [ "$STATE" = "fully-charged" ]; then
+        echo "%{F#8E7B6B}%{F-}"
+    else
+        echo "$ICON %{T3}$PERCENTAGE%%{T-}"
+    fi
 }
 
 "$@"
