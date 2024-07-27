@@ -3,13 +3,13 @@
 set -eu -o pipefail
 
 _get_alias() {
-    echo "$@" |
+    echo "$1" |
         grep -e "Alias" |
         cut -f2- -d" "
 }
 
 _get_battery_percent() {
-    BATTERY_PERCENT=$(echo "$@" |
+    BATTERY_PERCENT=$(echo "$1" |
         grep -e "Battery Percentage" |
         cut -d "(" -f2 |
         cut -d ")" -f1)
@@ -20,7 +20,7 @@ _get_battery_percent() {
 }
 
 _get_icon() {
-    ICON=$(echo "$@" |
+    ICON=$(echo "$1" |
         grep -e "Icon" |
         cut -f2- -d" ")
 
@@ -109,4 +109,4 @@ get_connected_devices() {
     echo "$OUTPUT"
 }
 
-$1
+"$@"

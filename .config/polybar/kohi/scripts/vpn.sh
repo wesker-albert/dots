@@ -9,19 +9,19 @@ _get_connection_name() {
 }
 
 get_active_connection() {
-    CONNECTION_NAME=$(_get_connection_name)
+    NAME=$(_get_connection_name)
 
-    if [ -z "$CONNECTION_NAME" ]; then
+    if [ -z "$NAME" ]; then
         echo "%{F#A54242}󱦚%{F-} %{T3}%{F#DAABB1}off%{F-}%{T-}"
     else
-        echo "%{F#8E7B6B}󰦝%{F-} %{T3}$CONNECTION_NAME%{T-}"
+        echo "%{F#8E7B6B}󰦝%{F-} %{T3}$NAME%{T-}"
     fi
 }
 
 toggle_connection() {
-    CONNECTION_NAME=$(_get_connection_name)
+    NAME=$(_get_connection_name)
 
-    if [ -z "$CONNECTION_NAME" ]; then
+    if [ -z "$NAME" ]; then
         nmcli connection up "$NAME"
         notify-send --icon="changes-prevent" "VPN" "Connected to $NAME"
     else
