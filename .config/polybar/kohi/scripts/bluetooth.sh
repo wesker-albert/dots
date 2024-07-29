@@ -32,6 +32,8 @@
 # env-ICON_SCANNER              = 󰚫
 # env-ICON_VIDEO_DISPLAY        = 󰍹
 # env-ICON_DEFAULT              = 󰂱
+# env-LABEL_ELIPSES             = …
+# env-LABEL_MAX_LENGTH          = 10
 
 # format                        = <label>
 # format-fail                   = <label-fail>
@@ -46,7 +48,9 @@ set -eu -o pipefail
 _get_alias() {
     echo "$1" |
         grep -e "Alias" |
-        cut -f2- -d" "
+        cut -f2- -d" " |
+        awk -v len="$LABEL_MAX_LENGTH" \
+            '{ if (length($0) > len) print substr($0, 1, len) "'"$LABEL_ELIPSES"'"; else print; }'
 }
 
 _get_battery_percent() {

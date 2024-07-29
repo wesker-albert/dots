@@ -5,7 +5,7 @@ configuration {
 
 	terminal: "kitty";
 
-	display-drun: "";
+	display-drun: "󱓞";
 	drun-display-format: "{name}";
 
 	display-run: "";
