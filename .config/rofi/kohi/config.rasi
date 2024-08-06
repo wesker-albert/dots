@@ -3,7 +3,7 @@
 } 
 
 * {
-    --border-radius:    0px;
+    --border-radius:    4px;
     --icon-size:        30px;
     --padding:          8px;
     --spacing:          10px;
@@ -12,14 +12,24 @@
 window {
     anchor:             center;
     background-color:   #1E1C14;
-    border-color:       #8C9440;
+    border-color:       #1E1C14;
     border-radius:      @--border-radius;
-    border:             4px;
-    children:           [ inputbar, listview ];
+    border:             2px;
+    children:           [ wrapper-window ];
     location:           center;
-    padding:            20px;
+    padding:            2px;
     spacing:            @--spacing;
     width:              450px;
+}
+
+wrapper-window {
+    background-color:   #1E1C14;
+    border-color:       #8C9440;
+    border-radius:      0px;
+    border:             2px;
+    children:           [ inputbar, listview ];
+    padding:            15px;
+    spacing:            @--spacing;
 }
 
 

@@ -23,17 +23,19 @@
 
 # label                               = %output%
 
+set -eu -o pipefail
+
 _get_connection_name() {
     nmcli connection show --active |
         grep "wireguard\|openvpn" |
-        awk '{print $1;}'
+        awk '{print $1;}' || true
 }
 
 get_active_connection() {
     NAME=$(_get_connection_name)
 
     if [ -z "$NAME" ]; then
-        if [ -z "$LABEL_DISCONNECTED" ]; then
+        if [ -z ${LABEL_DISCONNECTED+x} ]; then
             echo "%{F$ICON_DISCONNECTED_FOREGROUND}$ICON_DISCONNECTED%{F-}"
         else
             echo "%{F$ICON_DISCONNECTED_FOREGROUND}$ICON_DISCONNECTED%{F-} %{T3}%{F$LABEL_DISCONNECTED_FOREGROUND}$LABEL_DISCONNECTED%{F-}%{T-}"
