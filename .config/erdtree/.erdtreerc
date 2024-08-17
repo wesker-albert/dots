@@ -1,0 +1,6 @@
+-L 1
+-H
+-.
+-y inverted
+-s name
+--dir-order last

@@ -1,19 +1,56 @@
 #!/bin/bash
-# shellcheck disable=SC2016
 
 set -eu -o pipefail
 
+DIR="$HOME/Pictures/screenshots"
+FILENAME="%Y-%m-%d_%H-%M-%S.png"
+QUALITY=100
+DUNST_TITLE="Scrot"
+
+# shellcheck disable=SC2016
+EXEC='echo $n'
+
+_openAction() {
+    gthumb "$1"
+}
+
 all_monitors() {
-    scrot ~/Pictures/Screenshots/%Y-%m-%d_%H-%M-%S.png -e 'gthumb $f' -q 100
+    _DUNST_TITLE="$DUNST_TITLE: All Monitors"
+    SCREENSHOT=$(scrot \
+        "$DIR/$FILENAME" \
+        --exec "$EXEC" \
+        --quality $QUALITY)
 }
 
-current_monitor() {
-    CURRENT_MONITOR=$(herbstclient list_monitors | grep 'FOCUS' | cut -c1-1)
-    scrot ~/Pictures/Screenshots/%Y-%m-%d_%H-%M-%S.png -e 'gthumb $f' -q 100 -M "$CURRENT_MONITOR"
+focused_monitor() {
+    _DUNST_TITLE="$DUNST_TITLE: Focused Monitor"
+    CURRENT_MONITOR=$(herbstclient list_monitors |
+        grep 'FOCUS' |
+        cut -c1-1)
+    SCREENSHOT=$(scrot \
+        "$DIR/$FILENAME" \
+        --exec "$EXEC" \
+        --quality $QUALITY \
+        --monitor "$CURRENT_MONITOR")
 }
 
-current_window() {
-    scrot ~/Pictures/Screenshots/%Y-%m-%d_%H-%M-%S.png -e 'gthumb $f' -q 100 -u -b
+focused_window() {
+    _DUNST_TITLE="$DUNST_TITLE: Focused Window"
+    SCREENSHOT=$(scrot \
+        "$DIR/$FILENAME" \
+        --exec "$EXEC" \
+        --quality $QUALITY \
+        --focused \
+        --border)
 }
 
 $1
+
+ACTION=$(dunstify \
+    --icon "$DIR/$SCREENSHOT" \
+    --action="default,Open" \
+    "$_DUNST_TITLE" "$SCREENSHOT")
+
+if [ "$ACTION" == "default" ]; then
+    _openAction "$DIR/$SCREENSHOT"
+fi

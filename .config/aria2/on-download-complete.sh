@@ -1,5 +1,7 @@
 #!/bin/bash
 
-notify-send --icon='filesave' 'Download Completed' "$(basename "$3")"
+dunstify \
+    --icon='document-save' \
+    'Download Completed' "$(basename "$3")"
 
 rm "$3.aria2"

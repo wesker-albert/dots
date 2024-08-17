@@ -87,8 +87,8 @@ hc keybind $MOD-w                   spawn kitty weechat
 # fn keys
 hc keybind $MOD-Menu                spawn rofi -show drun
 hc keybind Menu                     spawn kitty
-hc keybind Print                    spawn $SCRIPTS/screenshot.sh current_monitor
-hc keybind Shift-Print              spawn $SCRIPTS/screenshot.sh current_window
+hc keybind Print                    spawn $SCRIPTS/screenshot.sh focused_monitor
+hc keybind Shift-Print              spawn $SCRIPTS/screenshot.sh focused_window
 
 # frame: control
 hc keybind $MOD-Delete              remove
