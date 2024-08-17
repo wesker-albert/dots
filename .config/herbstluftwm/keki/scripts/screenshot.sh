@@ -25,7 +25,7 @@ all_monitors() {
 focused_monitor() {
     _DUNST_TITLE="$DUNST_TITLE: Focused Monitor"
     CURRENT_MONITOR=$(herbstclient list_monitors |
-        grep 'FOCUS' |
+        grep "FOCUS" |
         cut -c1-1)
     SCREENSHOT=$(scrot \
         "$DIR/$FILENAME" \
