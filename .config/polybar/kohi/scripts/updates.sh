@@ -19,6 +19,19 @@
 
 set -eu -o pipefail
 
+DUNST_TITLE="Package Management"
+TMP_FOLDER="/tmp/polybar"
+TMP_FILEPATH="$TMP_FOLDER/updates"
+
+if [ ! -f "$TMP_FILEPATH" ]; then
+    mkdir -p "$TMP_FOLDER"
+    touch "$TMP_FILEPATH"
+fi
+
+_openAction() {
+    bash "$HOME"/.config/polybar/kohi/scripts/commands.sh spawn_upgrade
+}
+
 _get_list_of_upgrades() {
     apt list --upgradable 2>/dev/null |
         grep -e "upgradable from" |
@@ -27,8 +40,22 @@ _get_list_of_upgrades() {
 
 get_update_count() {
     UPDATE_COUNT=$(_get_list_of_upgrades | wc -l)
+    PREV_UPDATE_COUNT=$(cat "$TMP_FILEPATH")
 
     echo "$UPDATE_COUNT"
+    echo "$UPDATE_COUNT" >$TMP_FILEPATH
+
+    if [ "$PREV_UPDATE_COUNT" != "$UPDATE_COUNT" ]; then
+        ACTION=$(dunstify \
+            --appname "polybar-updates" \
+            --icon "synaptic" \
+            --action="default,Open" \
+            "$DUNST_TITLE" "$UPDATE_COUNT new updates available")
+
+        if [ "$ACTION" == "default" ]; then
+            _openAction
+        fi
+    fi
 }
 
-$1
+$1 &

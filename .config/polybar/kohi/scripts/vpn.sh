@@ -25,6 +25,19 @@
 
 set -eu -o pipefail
 
+DUNST_TITLE="Network VPN"
+TMP_FOLDER="/tmp/polybar"
+TMP_FILEPATH="$TMP_FOLDER/vpn"
+
+if [ ! -f "$TMP_FILEPATH" ]; then
+    mkdir -p "$TMP_FOLDER"
+    touch "$TMP_FILEPATH"
+fi
+
+_openAction() {
+    bash "$HOME"/.config/polybar/kohi/scripts/commands.sh spawn_nmtui
+}
+
 _get_connection_name() {
     nmcli connection show --active |
         grep "wireguard\|openvpn" |
@@ -33,16 +46,41 @@ _get_connection_name() {
 
 get_active_connection() {
     NAME=$(_get_connection_name)
+    PREV_NAME=$(cat "$TMP_FILEPATH")
 
     if [ -z "$NAME" ]; then
+        NAME="null"
+
         if [ -z ${LABEL_DISCONNECTED+x} ]; then
             echo "%{F$ICON_DISCONNECTED_FOREGROUND}$ICON_DISCONNECTED%{F-}"
         else
             echo "%{F$ICON_DISCONNECTED_FOREGROUND}$ICON_DISCONNECTED%{F-} %{T3}%{F$LABEL_DISCONNECTED_FOREGROUND}$LABEL_DISCONNECTED%{F-}%{T-}"
         fi
+
+        echo "$NAME" >$TMP_FILEPATH
+
+        if [ "$PREV_NAME" != "$NAME" ]; then
+            ACTION=$(dunstify \
+                --urgency "critical" \
+                --icon "changes-allow" \
+                --action="default,Open" \
+                "$DUNST_TITLE" "You are not currently protected!")
+
+            if [ "$ACTION" == "default" ]; then
+                _openAction
+            fi
+        fi
     else
         echo "%{F$ICON_CONNECTED_FOREGROUND}$ICON_CONNECTED%{F-} %{T3}$NAME%{T-}"
+
+        echo "$NAME" >$TMP_FILEPATH
+
+        if [ "$PREV_NAME" != "$NAME" ]; then
+            dunstify \
+                --icon "changes-prevent" \
+                "$DUNST_TITLE" "Connected to profile: $NAME"
+        fi
     fi
 }
 
-$1
+$1 &

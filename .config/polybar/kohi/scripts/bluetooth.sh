@@ -45,6 +45,14 @@
 
 set -eu -o pipefail
 
+TMP_FOLDER="/tmp/polybar"
+TMP_FILEPATH="$TMP_FOLDER/bluetooth"
+
+if [ ! -f "$TMP_FILEPATH" ]; then
+    mkdir -p "$TMP_FOLDER"
+    touch "$TMP_FILEPATH"
+fi
+
 _get_alias() {
     echo "$1" |
         grep -e "Alias" |
@@ -130,10 +138,15 @@ _get_icon() {
 get_connected_devices() {
     UUIDS=$(bluetoothctl devices Connected | cut -f2 -d' ')
 
+    if [ -z "$UUIDS" ]; then
+        echo 0 >$TMP_FILEPATH
+    fi
+
     mapfile -t UUIDS <<<"$UUIDS"
 
     INDEX=0
     OUTPUT=""
+    PREV_LEN=$(cat "$TMP_FILEPATH")
 
     for UUID in "${UUIDS[@]}"; do
         DEVICE=$(bluetoothctl info "$UUID")
@@ -150,6 +163,11 @@ get_connected_devices() {
 
         ((INDEX = INDEX + 1))
     done
+
+    if [ "$PREV_LEN" != "$INDEX" ]; then
+        killall -w -q volumeicon && volumeicon &
+    fi
+    echo "$INDEX" >$TMP_FILEPATH
 
     echo "$OUTPUT"
 }

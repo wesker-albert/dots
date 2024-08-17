@@ -124,7 +124,7 @@
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
-    line_height = 0
+    line_height = 2
 
     # Possible values are:
     # full: Allow a small subset of html markup in notifications:
@@ -407,51 +407,32 @@
 #    msg_urgency = critical
 #    fullscreen = show
 
-#[espeak]
-#    summary = "*"
-#    script = dunst_espeak.sh
+[scrot]
+   appname = scrot
+   max_icon_size = 128
 
-#[script-test]
-#    summary = "*script*"
-#    script = dunst_test.sh
+[polybar-updates]
+   appname = polybar-updates
+   timeout = 10
 
-#[ignore]
-#    # This notification will not be displayed
-#    summary = "foobar"
-#    skip_display = true
+[volumeicon]
+   appname = "Volume Icon"
+   format = "Volume %n%"
 
-#[history-ignore]
-#    # This notification will not be saved in history
-#    summary = "foobar"
-#    history_ignore = yes
+[volumeicon-mute]
+   appname = "Volume Icon"
+   icon = "audio-volume-muted"
+   format = "Volume muted"
 
-#[skip-display]
-#    # This notification will not be displayed, but will be included in the history
-#    summary = "foobar"
-#    skip_display = yes
+[power-manager]
+   appname = xfce4-power-manager
+   new_icon = "battery"
+   format = "%b"
 
-#[signed_on]
-#    appname = Pidgin
-#    summary = "*signed on*"
-#    urgency = low
-#
-#[signed_off]
-#    appname = Pidgin
-#    summary = *signed off*
-#    urgency = low
-#
-#[says]
-#    appname = Pidgin
-#    summary = *says*
-#    urgency = critical
-#
-#[twitter]
-#    appname = Pidgin
-#    summary = *twitter.com*
-#    urgency = normal
-#
-#[stack-volumes]
-#    appname = "some_volume_notifiers"
-#    set_stack_tag = "volume"
-#
+[power-manager-brightness]
+   appname = xfce4-power-manager
+   body = "Brightness: *"
+   new_icon = "display-brightness"
+   format = "Brightness %n%"
+
 # vim: ft=cfg

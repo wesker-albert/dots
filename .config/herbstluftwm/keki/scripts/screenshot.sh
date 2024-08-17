@@ -47,6 +47,7 @@ focused_window() {
 $1
 
 ACTION=$(dunstify \
+    --appname "scrot" \
     --icon "$DIR/$SCREENSHOT" \
     --action="default,Open" \
     "$_DUNST_TITLE" "$SCREENSHOT")

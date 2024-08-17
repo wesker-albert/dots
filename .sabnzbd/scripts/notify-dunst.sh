@@ -3,7 +3,7 @@
 set -eu -o pipefail
 
 ICON_PATH="/usr/share/sabnzbdplus/icons"
-MSG_MAX_LENGTH=64
+MSG_MAX_LENGTH=60
 ELIPSES="…"
 
 MSG=$(echo "$3" |

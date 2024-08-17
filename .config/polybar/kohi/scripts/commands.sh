@@ -15,7 +15,7 @@ spawn_alsamixer() {
 
 spawn_nmtui() {
     NEWT_COLORS="root=black,black;" \
-        kitty $KITTY_BOOTSTRAP -o initial_window_width=82c -o initial_window_height=35c nmtui
+        kitty $KITTY_BOOTSTRAP -o initial_window_width=82c -o initial_window_height=35c nmtui-connect
 }
 
 spawn_upgrade() {
