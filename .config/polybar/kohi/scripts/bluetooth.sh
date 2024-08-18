@@ -137,32 +137,30 @@ _get_icon() {
 
 get_connected_devices() {
     UUIDS=$(bluetoothctl devices Connected | cut -f2 -d' ')
-
-    if [ -z "$UUIDS" ]; then
-        echo 0 >$TMP_FILEPATH
-    fi
-
-    mapfile -t UUIDS <<<"$UUIDS"
-
+    PREV_LEN=$(cat "$TMP_FILEPATH")
     INDEX=0
     OUTPUT=""
-    PREV_LEN=$(cat "$TMP_FILEPATH")
 
-    for UUID in "${UUIDS[@]}"; do
-        DEVICE=$(bluetoothctl info "$UUID")
+    if [ "$UUIDS" ]; then
+        mapfile -t UUIDS <<<"$UUIDS"
 
-        ICON=$(_get_icon "$DEVICE")
-        ALIAS=$(_get_alias "$DEVICE")
-        BATTERY_PERCENT=$(_get_battery_percent "$DEVICE")
+        for UUID in "${UUIDS[@]}"; do
+            DEVICE=$(bluetoothctl info "$UUID")
 
-        if [ $INDEX -ne 0 ]; then
-            OUTPUT+="$SEPARATOR"
-        fi
+            ICON=$(_get_icon "$DEVICE")
+            ALIAS=$(_get_alias "$DEVICE")
+            BATTERY_PERCENT=$(_get_battery_percent "$DEVICE")
 
-        OUTPUT+="%{F$ICON_FOREGROUND}$ICON%{F-} %{T3}$ALIAS$BATTERY_PERCENT%{T-}"
+            if [ $INDEX -ne 0 ]; then
+                OUTPUT+="$SEPARATOR"
+            fi
 
-        ((INDEX = INDEX + 1))
-    done
+            OUTPUT+="%{F$ICON_FOREGROUND}$ICON%{F-} %{T3}$ALIAS$BATTERY_PERCENT%{T-}"
+
+            ((INDEX = INDEX + 1))
+        done
+
+    fi
 
     if [ "$PREV_LEN" != "$INDEX" ]; then
         killall -w -q volumeicon && volumeicon &
