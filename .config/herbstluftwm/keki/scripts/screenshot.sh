@@ -5,7 +5,6 @@ set -eu -o pipefail
 DIR="$HOME/Pictures/screenshots"
 FILENAME="%Y-%m-%d_%H-%M-%S.png"
 QUALITY=100
-DUNST_TITLE="Scrot"
 
 # shellcheck disable=SC2016
 EXEC='echo $n'
@@ -15,7 +14,7 @@ _openAction() {
 }
 
 all_monitors() {
-    _DUNST_TITLE="$DUNST_TITLE: All Monitors"
+    _DUNST_TITLE="Captured all monitors:"
     SCREENSHOT=$(scrot \
         "$DIR/$FILENAME" \
         --exec "$EXEC" \
@@ -23,7 +22,7 @@ all_monitors() {
 }
 
 focused_monitor() {
-    _DUNST_TITLE="$DUNST_TITLE: Focused Monitor"
+    _DUNST_TITLE="Captured focused monitor:"
     CURRENT_MONITOR=$(herbstclient list_monitors |
         grep "FOCUS" |
         cut -c1-1)
@@ -35,7 +34,7 @@ focused_monitor() {
 }
 
 focused_window() {
-    _DUNST_TITLE="$DUNST_TITLE: Focused Window"
+    _DUNST_TITLE="Captured focused window:"
     SCREENSHOT=$(scrot \
         "$DIR/$FILENAME" \
         --exec "$EXEC" \

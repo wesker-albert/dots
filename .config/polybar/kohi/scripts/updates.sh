@@ -19,7 +19,6 @@
 
 set -eu -o pipefail
 
-DUNST_TITLE="Package Management"
 TMP_FOLDER="/tmp/polybar"
 TMP_FILEPATH="$TMP_FOLDER/updates"
 
@@ -29,7 +28,7 @@ if [ ! -f "$TMP_FILEPATH" ]; then
 fi
 
 _openAction() {
-    bash "$HOME"/.config/polybar/kohi/scripts/commands.sh spawn_upgrade
+    "$HOME"/.config/polybar/kohi/scripts/commands.sh spawn_upgrade
 }
 
 _get_list_of_upgrades() {
@@ -50,7 +49,7 @@ get_update_count() {
             --appname "polybar-updates" \
             --icon "software-update-available" \
             --action="default,Open" \
-            "$DUNST_TITLE" "$UPDATE_COUNT new updates available")
+            "$UPDATE_COUNT new package updates available")
 
         if [ "$ACTION" == "default" ]; then
             _openAction

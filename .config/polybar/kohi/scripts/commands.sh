@@ -1,25 +1,64 @@
 #!/bin/bash
-# shellcheck disable=SC2086
 
 set -eu -o pipefail
 
-KITTY_BOOTSTRAP="--class kitty_float -o remember_window_size=n"
+_get_win_id() {
+    wmctrl -l |
+        grep "$@" |
+        grep -v grep |
+        awk '{print $1}' ||
+        true
+}
+
+_spawn_kitty() {
+    kitty \
+        --class kitty_float \
+        -o remember_window_size=n \
+        -o initial_window_width="$2" \
+        -o initial_window_height="$3" \
+        "$1"
+
+}
 
 spawn_calcurse() {
-    kitty $KITTY_BOOTSTRAP -o initial_window_width=100c -o initial_window_height=45c calcurse
+    WINID=$(_get_win_id "calcurse")
+
+    if [ -z "$WINID" ]; then
+        _spawn_kitty calcurse 100c 45c
+    else
+        wmctrl -ia "$WINID"
+    fi
 }
 
 spawn_alsamixer() {
-    kitty $KITTY_BOOTSTRAP -o initial_window_width=200c -o initial_window_height=35c alsamixer
+    WINID=$(_get_win_id "Volume Control")
+
+    if [ -z "$WINID" ]; then
+        _spawn_kitty alsamixer 200c 35c
+    else
+        wmctrl -ia "$WINID"
+    fi
 }
 
 spawn_nmtui() {
-    NEWT_COLORS="root=black,black;" \
-        kitty $KITTY_BOOTSTRAP -o initial_window_width=82c -o initial_window_height=35c nmtui-connect
+    WINID=$(_get_win_id "nmtui-connect")
+
+    if [ -z "$WINID" ]; then
+        NEWT_COLORS="root=black,black;" \
+            _spawn_kitty nmtui-connect 82c 35c
+    else
+        wmctrl -ia "$WINID"
+    fi
 }
 
 spawn_upgrade() {
-    kitty --hold $KITTY_BOOTSTRAP -o initial_window_width=100c -o initial_window_height=35c sudo apt upgrade
+    WINID=$(_get_win_id "sudo apt upgrade")
+
+    if [ -z "$WINID" ]; then
+        _spawn_kitty "sudo apt upgrade" 100c 35c
+    else
+        wmctrl -ia "$WINID"
+    fi
 }
 
 $1

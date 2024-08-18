@@ -25,7 +25,6 @@
 
 set -eu -o pipefail
 
-DUNST_TITLE="Network VPN"
 TMP_FOLDER="/tmp/polybar"
 TMP_FILEPATH="$TMP_FOLDER/vpn"
 
@@ -35,13 +34,14 @@ if [ ! -f "$TMP_FILEPATH" ]; then
 fi
 
 _openAction() {
-    bash "$HOME"/.config/polybar/kohi/scripts/commands.sh spawn_nmtui
+    "$HOME"/.config/polybar/kohi/scripts/commands.sh spawn_nmtui
 }
 
 _get_connection_name() {
     nmcli connection show --active |
         grep "wireguard\|openvpn" |
-        awk '{print $1;}' || true
+        awk '{print $1;}' ||
+        true
 }
 
 get_active_connection() {
@@ -61,10 +61,11 @@ get_active_connection() {
 
         if [ "$PREV_NAME" != "$NAME" ]; then
             ACTION=$(dunstify \
+                --appname "polybar-vpn" \
                 --urgency "critical" \
                 --icon "changes-allow" \
                 --action="default,Open" \
-                "$DUNST_TITLE" "You are not currently protected!")
+                "You are not currently protected by a VPN!")
 
             if [ "$ACTION" == "default" ]; then
                 _openAction
@@ -77,8 +78,9 @@ get_active_connection() {
 
         if [ "$PREV_NAME" != "$NAME" ]; then
             dunstify \
+                --appname "polybar-vpn" \
                 --icon "changes-prevent" \
-                "$DUNST_TITLE" "Connected to profile: $NAME"
+                "Connected to VPN profile: $NAME"
         fi
     fi
 }

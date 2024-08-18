@@ -293,8 +293,8 @@
     # These values can be strung together for each mouse event, and
     # will be executed in sequence.
     mouse_left_click = do_action, close_current
-    mouse_middle_click = close_current
-    mouse_right_click = close_all
+    mouse_middle_click = close_all
+    mouse_right_click = close_current
 
 # Experimental features that may or may not work correctly. Do not expect them
 # to have a consistent behaviour across releases.
@@ -410,10 +410,16 @@
 [scrot]
    appname = scrot
    max_icon_size = 128
+   format = "%s\n%b"
 
 [polybar-updates]
    appname = polybar-updates
    timeout = 10
+   format = "%s"
+
+[polybar-vpn]
+   appname = polybar-vpn
+   format = "%s"
 
 [volumeicon]
    appname = "Volume Icon"
@@ -437,7 +443,7 @@
 
 [launch-webapp]
    appname = launch-webapp
-   timeout = 3
-   format = "%b"
+   timeout = 2
+   format = "%s"
 
 # vim: ft=cfg

@@ -5,7 +5,9 @@ set -eu -o pipefail
 # we only use firefox and firefox based browsers in this house
 PROFILE_DIR="$HOME/.local/share/ice/firefox"
 
-PID=$(ps aux | pgrep -f "[librewolf\|firefox] \-\-class WebApp-$2" || true)
+PID=$(ps aux |
+    pgrep -f "[librewolf\|firefox] \-\-class WebApp-$2" ||
+    true)
 
 if [ -z "$PID" ]; then
     librewolf \
@@ -24,5 +26,5 @@ else
     dunstify \
         --appname "launch-webapp" \
         --icon "emblem-important" \
-        "WebApp Manager" "$1 is already running..."
+        "$1 is already running..."
 fi
