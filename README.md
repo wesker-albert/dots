@@ -10,6 +10,8 @@ This isn't an exhaustive list, but here are some of the tools employed by or ref
 - amfora
 - aria2c
 - deluge
+- dunst
+- erdtree
 - fzf
 - herbstluftwm
 - kitty
@@ -23,6 +25,9 @@ This isn't an exhaustive list, but here are some of the tools employed by or ref
 - rofi
 - sabnzbd
 - tupimage
+- volumeicon
+- webapp-manager
 - weechat
 - wireguard
+- wmctrl
 - yt-dlp

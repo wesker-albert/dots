@@ -435,4 +435,9 @@
    new_icon = "display-brightness"
    format = "Brightness %n%"
 
+[launch-webapp]
+   appname = launch-webapp
+   timeout = 3
+   format = "%b"
+
 # vim: ft=cfg

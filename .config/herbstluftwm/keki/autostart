@@ -73,7 +73,7 @@ hc keybind $MOD-f                   spawn freetube
 hc keybind $MOD-g                   spawn gimp
 hc keybind $MOD-i                   spawn librewolf
 hc keybind $MOD-m                   spawn kitty $KITTY_FLOAT $KITTY_WIDTH=100c $KITTY_HEIGHT=26c bash $SCRIPTS/fzf_mpv.sh search_local
-hc keybind $MOD-s                   spawn $SCRIPTS/launch-webapp.sh SABnzbd4223 http://127.0.0.1:8080/
+hc keybind $MOD-s                   spawn $SCRIPTS/launch-webapp.sh "SABnzbd Web" SABnzbd4223 http://127.0.0.1:8080/
 hc keybind $MOD-Shift-s             spawn synaptic-pkexec
 hc keybind $MOD-Shift-c             spawn rofi -show drun
 hc keybind $MOD-Shift-i             spawn firefox

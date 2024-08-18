@@ -48,7 +48,7 @@ get_update_count() {
     if [ "$PREV_UPDATE_COUNT" != "$UPDATE_COUNT" ]; then
         ACTION=$(dunstify \
             --appname "polybar-updates" \
-            --icon "synaptic" \
+            --icon "software-update-available" \
             --action="default,Open" \
             "$DUNST_TITLE" "$UPDATE_COUNT new updates available")
 
