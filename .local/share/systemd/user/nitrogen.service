@@ -3,8 +3,6 @@ Description=Restore wallper using Nitrogen
 
 [Service]
 Type=simple
-#User=
-#Group=
 ExecStart=nitrogen --restore
 Restart=on-failure
 StandardOutput=file:/tmp/nitrogen.log

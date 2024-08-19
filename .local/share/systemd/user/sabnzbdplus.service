@@ -1,13 +1,9 @@
 [Unit]
-Description=SABnzbd
+Description=Start SABnzbd
 
 [Service]
 Type=simple
-#User=
-#Group=
-ExecStart=sabnzbdplus
-Restart=on-failure
-StandardOutput=file:/tmp/sabnzbdplus.log
+ExecStart=sabnzbdplus -f %h/.config/sabnzbd/sabnzbd.ini
 
 [Install]
 WantedBy=default.target

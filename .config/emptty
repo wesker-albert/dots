@@ -1,0 +1,8 @@
+#!/bin/sh
+# shellcheck disable=SC2034
+
+Selection=auto
+
+systemctl --user import-environment DISPLAY
+
+exec "$@"

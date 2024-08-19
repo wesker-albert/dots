@@ -3,8 +3,6 @@ Description=ATI-SPI
 
 [Service]
 Type=simple
-#User=
-#Group=
 ExecStart=/usr/libexec/at-spi-bus-launcher --launch-immediately
 Restart=on-failure
 StandardOutput=file:/tmp/at-spi-bus-launcher.log

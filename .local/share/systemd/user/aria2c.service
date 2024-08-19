@@ -9,7 +9,6 @@ ExecStart=%h/.local/bin/start-aria2c
 ExecReload=/usr/bin/kill -HUP $MAINPID
 RestartSec=1min
 Restart=on-failure
-StandardOutput=file:/tmp/aria2c.log
 
 [Install]
 WantedBy=default.target

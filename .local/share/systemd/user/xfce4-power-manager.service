@@ -3,8 +3,6 @@ Description=XFCE Power Manager
 
 [Service]
 Type=simple
-#User=
-#Group=
 ExecStart=xfce4-power-manager
 Restart=on-failure
 StandardOutput=file:/tmp/xfce4-power-manager.log

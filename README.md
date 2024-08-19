@@ -5,12 +5,14 @@ I typically just keep this repo cloned at `~/Projects/dots/` and then use symlin
 
 ## Tools expected
 
-This isn't an exhaustive list, but here are some of the tools employed by or referenced within my dots:
+This isn't an exhaustive list, but here are some of the tools/apps/services employed by or referenced within my dots:
 
 - amfora
 - aria2c
+- blueman
 - deluge
 - dunst
+- emptty
 - erdtree
 - fzf
 - herbstluftwm
@@ -18,12 +20,14 @@ This isn't an exhaustive list, but here are some of the tools employed by or ref
 - librewolf
 - mpv
 - nmcli
+- nitrogen
 - oh-my-zsh, powerline10k
 - phetch
 - picom
 - polybar
 - rofi
 - sabnzbd
+- systemd
 - tupimage
 - volumeicon
 - webapp-manager
