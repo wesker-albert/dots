@@ -1,0 +1,13 @@
+[Unit]
+Description=Pulseaudio
+
+[Service]
+Type=simple
+#User=
+#Group=
+ExecStart=start-pulseaudio-x11
+Restart=on-failure
+StandardOutput=file:/tmp/pulseaudio-x11.log
+
+[Install]
+WantedBy=default.target

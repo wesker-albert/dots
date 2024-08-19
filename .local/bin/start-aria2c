@@ -1,0 +1,7 @@
+#!/bin/bash
+
+aria2c \
+    --conf-path="$HOME/.config/aria2/aria2.conf" \
+    --rpc-secret="$(secret-tool lookup service aria2)"
+
+# busybox httpd -p 127.0.0.1:8090 -h /home/wesker/.ariang/ &

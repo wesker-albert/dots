@@ -1,0 +1,13 @@
+[Unit]
+Description=Blueman
+
+[Service]
+Type=simple
+#User=
+#Group=
+ExecStart=blueman-start
+Restart=on-failure
+StandardOutput=file:/tmp/blueman.log
+
+[Install]
+WantedBy=default.target

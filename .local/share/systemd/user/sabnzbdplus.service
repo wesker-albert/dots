@@ -1,0 +1,13 @@
+[Unit]
+Description=SABnzbd
+
+[Service]
+Type=simple
+#User=
+#Group=
+ExecStart=sabnzbdplus
+Restart=on-failure
+StandardOutput=file:/tmp/sabnzbdplus.log
+
+[Install]
+WantedBy=default.target

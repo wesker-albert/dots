@@ -1,0 +1,13 @@
+[Unit]
+Description=Volume Icon
+
+[Service]
+Type=simple
+#User=
+#Group=
+ExecStart=volumeicon
+Restart=on-failure
+StandardOutput=file:/tmp/volumeicon.log
+
+[Install]
+WantedBy=default.target

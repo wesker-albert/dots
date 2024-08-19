@@ -1,0 +1,13 @@
+[Unit]
+Description=Polybar
+
+[Service]
+Type=simple
+#User=
+#Group=
+ExecStart=polybar main
+Restart=on-failure
+StandardOutput=file:/tmp/polybar.log
+
+[Install]
+WantedBy=default.target

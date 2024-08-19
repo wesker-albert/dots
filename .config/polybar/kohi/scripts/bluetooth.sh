@@ -163,7 +163,7 @@ get_connected_devices() {
     fi
 
     if [ "$PREV_LEN" != "$INDEX" ]; then
-        killall -w -q volumeicon && volumeicon &
+        systemctl --user restart volumeicon.service
     fi
     echo "$INDEX" >$TMP_FILEPATH
 

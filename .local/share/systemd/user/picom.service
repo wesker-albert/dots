@@ -1,0 +1,13 @@
+[Unit]
+Description=Picom compositor
+
+[Service]
+Type=simple
+#User=
+#Group=
+ExecStart=picom
+Restart=on-failure
+StandardOutput=file:/tmp/picom.log
+
+[Install]
+WantedBy=default.target

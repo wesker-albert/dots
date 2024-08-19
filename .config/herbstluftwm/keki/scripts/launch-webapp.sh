@@ -6,15 +6,15 @@ set -eu -o pipefail
 PROFILE_DIR="$HOME/.local/share/ice/firefox"
 
 PID=$(ps aux |
-    pgrep -f "[librewolf\|firefox] \-\-class WebApp-$2" ||
+    pgrep -f "[librewolf\|firefox] \-\-class WebApp-$1" ||
     true)
 
 if [ -z "$PID" ]; then
     librewolf \
-        --class "WebApp-$2" \
-        --name "WebApp-$2" \
-        --profile "$PROFILE_DIR/$2" \
-        --no-remote "$3"
+        --class "WebApp-$1" \
+        --name "WebApp-$1" \
+        --profile "$PROFILE_DIR/$1" \
+        --no-remote "$2"
 else
     WINID=$(wmctrl -lp |
         grep "$PID" |
@@ -22,9 +22,4 @@ else
         awk '{print $1}')
 
     wmctrl -ia "$WINID"
-
-    dunstify \
-        --appname "launch-webapp" \
-        --icon "emblem-important" \
-        "$1 is already running..."
 fi
