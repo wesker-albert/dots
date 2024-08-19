@@ -61,6 +61,7 @@ done
 
 
 # keybindings
+hc keybind $MOD-a                   spawn "$SCRIPTS"/launch-webapp.sh AriaNg1971 http://127.0.0.1:8090/
 hc keybind $MOD-c                   spawn kitty
 hc keybind $MOD-f                   spawn freetube
 hc keybind $MOD-g                   spawn gimp

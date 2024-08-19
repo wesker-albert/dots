@@ -61,14 +61,13 @@
     "telemetry.telemetryLevel": "off",
     "terminal.integrated.customGlyphs": false,
     "terminal.integrated.drawBoldTextInBrightColors": false,
-    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "terminal.integrated.enableMultiLinePasteWarning": "never",
     "terminal.integrated.fontFamily": "'AudimatMono Nerd Font'",
     "terminal.integrated.tabs.location": "left",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "window.customMenuBarAltFocus": false,
     "window.menuBarVisibility": "toggle",
     "window.zoomLevel": 1,
-    "workbench.activityBar.visible": false,
     "workbench.colorCustomizations": {
         "errorLens.errorForeground": "#e16763",
         "errorLens.errorMessageBackground": "#bb565350",
@@ -81,9 +80,10 @@
     },
     "workbench.colorTheme": "Kohi",
     "workbench.editor.pinnedTabSizing": "compact",
-    "workbench.editor.showTabs": true,
+    "workbench.editor.showTabs": "multiple",
     "workbench.iconTheme": "gruvbox-material-icon-theme",
     "workbench.productIconTheme": "material-product-icons",
     "workbench.startupEditor": "none",
-    "workbench.tips.enabled": false
+    "workbench.tips.enabled": false,
+    "workbench.activityBar.location": "hidden"
 }

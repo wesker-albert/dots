@@ -1,4 +1,5 @@
-*/mpv/watch_later
-*/mpv/playlists
 */aria2/download.session
+*/aria2/incomplete
+*/mpv/playlists
+*/mpv/watch_later
 */weechat/*/sec.conf
