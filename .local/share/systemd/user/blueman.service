@@ -1,0 +1,13 @@
+[Unit]
+Description=Blueman
+Wants=polkit-gnome-auth-agent.service
+
+[Service]
+Type=simple
+ExecStartPre=/bin/sleep 1
+ExecStart=blueman-applet
+Restart=on-failure
+StandardOutput=file:/tmp/blueman.log
+
+[Install]
+WantedBy=default.target

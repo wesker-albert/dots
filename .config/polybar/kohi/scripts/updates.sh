@@ -57,4 +57,4 @@ get_update_count() {
     fi
 }
 
-$1 &
+$1

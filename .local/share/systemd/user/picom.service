@@ -3,6 +3,7 @@ Description=Picom compositor
 
 [Service]
 Type=simple
+ExecStartPre=/bin/sleep 1
 ExecStart=picom
 Restart=on-failure
 StandardOutput=file:/tmp/picom.log

@@ -3,6 +3,7 @@ Description=Policykit Gnome authentication agent
 
 [Service]
 Type=simple
+ExecStartPre=/bin/sleep 1
 ExecStart=/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 Restart=on-failure
 StandardOutput=file:/tmp/polkit-gnome-authentication-agent.log

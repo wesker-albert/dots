@@ -3,6 +3,7 @@ Description=Volume Icon
 
 [Service]
 Type=simple
+ExecStartPre=/bin/sleep 1
 ExecStart=volumeicon
 Restart=on-failure
 StandardOutput=file:/tmp/volumeicon.log

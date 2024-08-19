@@ -10,13 +10,14 @@ _get_win_id() {
         true
 }
 
+# shellcheck disable=SC2086
 _spawn_kitty() {
     kitty \
         --class kitty_float \
         -o remember_window_size=n \
         -o initial_window_width="$2" \
         -o initial_window_height="$3" \
-        "$1"
+        $1
 
 }
 
@@ -52,13 +53,7 @@ spawn_nmtui() {
 }
 
 spawn_upgrade() {
-    WINID=$(_get_win_id "sudo apt upgrade")
-
-    if [ -z "$WINID" ]; then
-        _spawn_kitty "sudo apt upgrade" 100c 35c
-    else
-        wmctrl -ia "$WINID"
-    fi
+    _spawn_kitty 'sudo apt upgrade' 100c 35c
 }
 
 $1
