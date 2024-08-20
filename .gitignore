@@ -1,5 +1,7 @@
-*/aria2/download.session
-*/aria2/incomplete
-*/mpv/playlists
-*/mpv/watch_later
-*/weechat/*/sec.conf
+.config/aria2/download.session
+.config/aria2/incomplete
+.config/mpv/playlists
+.config/mpv/watch_later
+.config/weechat/*/irc.conf
+.config/weechat/*/sec.conf
+.local/share/weechat/*/autoload

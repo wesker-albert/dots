@@ -1,7 +1,5 @@
-# MOTD
-
-echo "$(<$ZSH_DOTS_THEME/.motd)"
-
+# Dynamic MOTD
+[[ ! -f $ZSH_DOTS_THEME/.motd.zsh ]] || source $ZSH_DOTS_THEME/.motd.zsh
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -16,7 +14,6 @@ export PATH=$PATH:$HOME/.local/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -41,21 +38,8 @@ plugins=(
   zsh-syntax-highlighting
 )
 
+# Load OMZsh
 source $ZSH/oh-my-zsh.sh
 
-
-# User configuration
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-
-# Customized prompt
-
+# Customized Powerlevel10k prompt
 [[ ! -f $ZSH_DOTS_THEME/.p10k.zsh ]] || source $ZSH_DOTS_THEME/.p10k.zsh
