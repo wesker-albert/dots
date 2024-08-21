@@ -55,7 +55,7 @@ SETTINGS = {
     'show_upgrade_ended': 'on',
     'sticky': 'off',
     'sticky_away': 'on',
-    'icon': '/usr/share/pixmaps/weechat.xpm',
+    'icon': '/home/wesker/.local/share/weechat/python/anotify.png',
 }
 
 
@@ -433,7 +433,7 @@ def main():
             weechat.config_set_plugin(option, value)
     # Initialize.
     name = "WeeChat"
-    icon = "/usr/share/pixmaps/weechat.xpm"
+    icon = "/home/wesker/.local/share/weechat/python/anotify.png"
     notifications = [
         'Public',
         'Private',

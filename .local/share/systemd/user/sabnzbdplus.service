@@ -3,7 +3,7 @@ Description=Start SABnzbd
 
 [Service]
 Type=simple
-ExecStart=sabnzbdplus -f %h/.config/sabnzbd/sabnzbd.ini
+ExecStart=sabnzbdplus -l -1 -f %h/.config/sabnzbd/sabnzbd.ini
 
 [Install]
 WantedBy=default.target

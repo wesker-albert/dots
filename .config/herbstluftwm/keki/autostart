@@ -67,6 +67,7 @@ hc keybind $MOD-f                   spawn freetube
 hc keybind $MOD-g                   spawn gimp
 hc keybind $MOD-i                   spawn librewolf
 hc keybind $MOD-m                   spawn "$SCRIPTS"/launch-kitty.sh "$SCRIPTS/fzf_mpv.sh search_local" 100c 26c
+hc keybind $MOD-n                   spawn nicotine
 hc keybind $MOD-s                   spawn "$SCRIPTS"/launch-webapp.sh SABnzbd4223 http://127.0.0.1:8080/
 hc keybind $MOD-Shift-c             spawn rofi -show drun
 hc keybind $MOD-Shift-i             spawn firefox
