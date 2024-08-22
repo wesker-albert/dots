@@ -13,7 +13,7 @@ set -e
 set -u
 
 # All supported choices
-all=(shutdown reboot lockscreen)
+all=(shutdown reboot lockscreen logout)
 
 # By default, show all (i.e., just copy the array)
 show=("${all[@]}")
@@ -40,7 +40,7 @@ icons[cancel]="\Uf0156"
 declare -A actions
 actions[lockscreen]="loginctl lock-session"
 actions[switchuser]=""
-actions[logout]=""
+actions[logout]="loginctl terminate-user $(whoami)"
 actions[suspend]=""
 actions[hibernate]=""
 actions[reboot]="systemctl reboot"

@@ -1,5 +1,7 @@
 #!/bin/bash
 
-SESSION_ID=$(loginctl list-sessions | grep "$(whoami)" | awk '{ print $1 }')
+set -eu -o pipefail
+
+SESSION_ID=$(loginctl session-status | awk 'NR==1{print $1}')
 
 xss-lock -s "$SESSION_ID" xsecurelock

@@ -441,4 +441,9 @@
    new_icon = "display-brightness"
    format = "Brightness %n%"
 
+[weechat]
+   appname = weechat
+   new_icon = "~/.local/share/weechat/notify.png"
+   timeout = 0
+
 # vim: ft=cfg

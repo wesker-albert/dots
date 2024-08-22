@@ -3,6 +3,6 @@
 
 Selection=auto
 
-systemctl --user import-environment DISPLAY
+systemctl --user import-environment DISPLAY PATH
 
 exec "$@"
