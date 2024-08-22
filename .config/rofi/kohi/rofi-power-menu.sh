@@ -38,8 +38,8 @@ icons[shutdown]="\Uf0425"
 icons[cancel]="\Uf0156"
 
 declare -A actions
-actions[lockscreen]="light-locker-command --lock"
-actions[switchuser]="dm-tool switch-to-greeter"
+actions[lockscreen]="loginctl lock-session"
+actions[switchuser]=""
 actions[logout]=""
 actions[suspend]=""
 actions[hibernate]=""

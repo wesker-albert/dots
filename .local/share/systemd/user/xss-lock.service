@@ -1,0 +1,18 @@
+[Unit]
+Description=xss-lock
+
+[Service]
+Type=simple
+Environment="XSECURELOCK_COMPOSITE_OBSCURER=0"
+Environment="XSECURELOCK_FONT=-urw-nimbus mono l-regular-o-normal--0-0-0-0-p-0-iso8859-1"
+Environment="XSECURELOCK_PASSWORD_PROMPT=time_hex"
+Environment="XSECURELOCK_SHOW_KEYBOARD_LAYOUT=0"
+Environment="XSECURELOCK_SHOW_HOSTNAME=0"
+Environment="XSECURELOCK_SHOW_USERNAME=0"
+ExecStartPre=/bin/sleep 1
+ExecStart=%h/.local/bin/start-xss-lock
+Restart=on-failure
+StandardOutput=file:/tmp/xss-locklog
+
+[Install]
+WantedBy=default.target

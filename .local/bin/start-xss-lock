@@ -1,0 +1,5 @@
+#!/bin/bash
+
+SESSION_ID=$(loginctl list-sessions | grep "$(whoami)" | awk '{ print $1 }')
+
+xss-lock -s "$SESSION_ID" xsecurelock

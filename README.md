@@ -19,8 +19,8 @@ This isn't an exhaustive list, but here are some of the tools/apps/services empl
 - kitty
 - librewolf
 - mpv
-- nmcli
 - nitrogen
+- nmcli
 - oh-my-zsh, powerline10k
 - phetch
 - picom
@@ -34,4 +34,6 @@ This isn't an exhaustive list, but here are some of the tools/apps/services empl
 - weechat
 - wireguard
 - wmctrl
+- xsecurelock
+- xss-lock
 - yt-dlp

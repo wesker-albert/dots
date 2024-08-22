@@ -79,6 +79,7 @@ hc keybind $MOD-Shift-v             spawn vlc
 hc keybind $MOD-t                   spawn thunar
 hc keybind $MOD-v                   spawn code --unity-launch
 hc keybind $MOD-w                   spawn kitty weechat
+hc keybind $MOD-Escape              spawn loginctl lock-session
 
 # fn keys
 hc keybind $MOD-Menu                spawn rofi -show drun
