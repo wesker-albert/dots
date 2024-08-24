@@ -13,10 +13,15 @@ README that explains what to do with it.
 I've tried to keep everything as "user agnostic" as possible, except for a couple
 limitations:
 
-- `./config/aria2/aria2.conf` won't allow you to use `~`, `%h`, or `$HOME` to complete
+- ~~`./.config/aria2/aria2.conf` won't allow you to use `~`, `%h`, or `$HOME` to complete
 a user's home directory. So unfortunately, download and session directories are
-hardcoded.
-- Some files in `./.local/bin` may also have hardcoded paths, and would need a quick
+hardcoded.~~
+
+As of `2024-08-23` the above is no longer the case. The offending lines have been removed
+from the configuration file, and instead are set in the `start-aria2c` script as
+command parameters.
+
+- Some files in `./.local/bin` may have hardcoded paths, and would need a quick
 glance over before you try to use them. I'd instead suggest just cherry picking files
 in this directory to suit your needs.
 
