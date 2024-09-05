@@ -49,7 +49,8 @@ ACTION=$(dunstify \
     --appname "scrot" \
     --icon "$DIR/$SCREENSHOT" \
     --action="default,Open" \
-    "$_DUNST_TITLE" "$SCREENSHOT")
+    "$_DUNST_TITLE" \
+    "$SCREENSHOT")
 
 if [ "$ACTION" == "default" ]; then
     _openAction "$DIR/$SCREENSHOT"

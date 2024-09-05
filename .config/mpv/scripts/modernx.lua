@@ -48,7 +48,7 @@ local user_opts = {
                                 -- to be shown as OSC title
     showtitle = true,		-- show title in OSC
     showonpause = true,         -- whether to disable the hide timeout on pause
-    timetotal = true,          	-- display total time instead of remaining time?
+    timetotal = false,          	-- display total time instead of remaining time?
     timems = false,             -- Display time down to millliseconds by default
     visibility = 'auto',        -- only used at init to set visibility_mode(...)
     windowcontrols = 'auto',    -- whether to show window controls

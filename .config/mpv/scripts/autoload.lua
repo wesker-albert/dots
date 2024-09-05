@@ -28,9 +28,9 @@ local utils = require 'mp.utils'
 
 o = {
     disabled = false,
-    images = true,
+    images = false,
     videos = true,
-    audio = true,
+    audio = false,
     ignore_hidden = true
 }
 options.read_options(o)

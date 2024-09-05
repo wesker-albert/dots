@@ -2,19 +2,12 @@
 
 set -eu -o pipefail
 
-# we only use firefox and firefox based browsers in this house
-PROFILE_DIR="$HOME/.local/share/ice/firefox"
-
 PID=$(ps aux |
-    pgrep -f "[librewolf\|firefox] \-\-class WebApp-$1" ||
+    pgrep -f "WebApp-$1" ||
     true)
 
 if [ -z "$PID" ]; then
-    librewolf \
-        --class "WebApp-$1" \
-        --name "WebApp-$1" \
-        --profile "$PROFILE_DIR/$1" \
-        --no-remote "$2"
+    gtk-launch "WebApp-$1.desktop"
 else
     WINID=$(wmctrl -lp |
         grep "$PID" |

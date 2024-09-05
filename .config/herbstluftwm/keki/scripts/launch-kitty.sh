@@ -6,4 +6,4 @@ kitty \
     -o remember_window_size=n \
     -o initial_window_width=$2 \
     -o initial_window_height=$3 \
-    $1
+    bash $1

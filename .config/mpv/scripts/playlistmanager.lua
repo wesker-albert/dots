@@ -420,7 +420,16 @@ end
 
 function draw_playlist()
   refresh_globals()
+
   local ass = assdraw.ass_new()
+  local w, h = mp.get_osd_size()
+
+  ass.text = '{\\pos(0,0)\\rDefault\\an7\\1c&H000000&\\alpha&H50&}'
+
+  ass:draw_start()
+  ass:rect_cw(0, 0, w, h)
+  ass:draw_stop()
+
   ass:new_event()
   ass:pos(settings.text_padding_x, settings.text_padding_y)
   ass:append(settings.style_ass_tags)
@@ -449,7 +458,6 @@ function draw_playlist()
       ass:append(settings.playlist_sliced_suffix)
     end
   end
-  local w, h = mp.get_osd_size()
   if settings.scale_playlist_by_window then w,h = 0, 0 end
   mp.set_osd_ass(w, h, ass.text)
 end

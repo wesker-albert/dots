@@ -61,16 +61,19 @@ done
 
 
 # keybindings
-hc keybind $MOD-a                   spawn "$SCRIPTS"/launch-webapp.sh AriaNg1971 http://127.0.0.1:8090/
+hc keybind $MOD-a                   spawn "$SCRIPTS"/launch-webapp.sh AriaNg1971
 hc keybind $MOD-c                   spawn kitty
+hc keybind $MOD-Control-m           spawn "$SCRIPTS"/launch-webapp.sh Meshtastic7722
+hc keybind $MOD-Escape              spawn loginctl lock-session
 hc keybind $MOD-f                   spawn freetube
 hc keybind $MOD-g                   spawn gimp
 hc keybind $MOD-i                   spawn librewolf
-hc keybind $MOD-m                   spawn "$SCRIPTS"/launch-kitty.sh "$SCRIPTS/fzf_mpv.sh search_local" 100c 26c
+hc keybind $MOD-m                   spawn "$SCRIPTS"/launch-kitty.sh "$SCRIPTS/fzf_mpv.sh search_videos" 100c 26c
 hc keybind $MOD-n                   spawn nicotine
-hc keybind $MOD-s                   spawn "$SCRIPTS"/launch-webapp.sh SABnzbd4223 http://127.0.0.1:8080/
+hc keybind $MOD-s                   spawn "$SCRIPTS"/launch-webapp.sh SABnzbd4223
 hc keybind $MOD-Shift-c             spawn rofi -show drun
 hc keybind $MOD-Shift-i             spawn firefox
+hc keybind $MOD-Shift-m             spawn "$SCRIPTS"/launch-kitty.sh "$SCRIPTS/fzf_mpv.sh search_playlists" 100c 26c
 hc keybind $MOD-Shift-q             spawn "$SCRIPTS"/rofi-power-menu.sh
 hc keybind $MOD-Shift-r             spawn "$SCRIPTS"/reload.sh
 hc keybind $MOD-Shift-s             spawn synaptic-pkexec
@@ -79,7 +82,6 @@ hc keybind $MOD-Shift-v             spawn vlc
 hc keybind $MOD-t                   spawn thunar
 hc keybind $MOD-v                   spawn code --unity-launch
 hc keybind $MOD-w                   spawn kitty weechat
-hc keybind $MOD-Escape              spawn loginctl lock-session
 
 # fn keys
 hc keybind $MOD-Menu                spawn rofi -show drun
