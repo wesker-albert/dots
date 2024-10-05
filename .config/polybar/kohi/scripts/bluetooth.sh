@@ -137,7 +137,6 @@ _get_icon() {
 
 get_connected_devices() {
     UUIDS=$(bluetoothctl devices Connected | cut -f2 -d' ')
-    PREV_LEN=$(cat "$TMP_FILEPATH")
     INDEX=0
     OUTPUT=""
 
@@ -162,9 +161,6 @@ get_connected_devices() {
 
     fi
 
-    if [ "$PREV_LEN" != "$INDEX" ]; then
-        systemctl --user restart volumeicon.service
-    fi
     echo "$INDEX" >$TMP_FILEPATH
 
     echo "$OUTPUT"

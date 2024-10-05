@@ -83,6 +83,11 @@ hc keybind $MOD-t                   spawn thunar
 hc keybind $MOD-v                   spawn code --unity-launch
 hc keybind $MOD-w                   spawn kitty weechat
 
+# multimedia keys
+hc keybind XF86AudioRaiseVolume     spawn "$SCRIPTS"/audio-keys.sh "raise_volume"
+hc keybind XF86AudioLowerVolume     spawn "$SCRIPTS"/audio-keys.sh "lower_volume"
+hc keybind XF86AudioMute            spawn "$SCRIPTS"/audio-keys.sh "toggle_mute"
+
 # fn keys
 hc keybind $MOD-Menu                spawn rofi -show drun
 hc keybind Menu                     spawn kitty

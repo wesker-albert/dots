@@ -421,15 +421,6 @@
    appname = polybar-vpn
    format = "%s"
 
-[volumeicon]
-   appname = "Volume Icon"
-   format = "Volume %n%"
-
-[volumeicon-mute]
-   appname = "Volume Icon"
-   icon = "audio-volume-muted"
-   format = "Volume muted"
-
 [power-manager]
    appname = xfce4-power-manager
    new_icon = "battery"

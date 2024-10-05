@@ -52,7 +52,6 @@ or referenced within my dots:
 - `sabnzbd` - Usenet client
 - `systemd` - *It's not that bad, really*
 - `tupimage` - Terminal image service
-- `volumeicon` - Volume hotkeys
 - `webapp-manager` - Web app creator
 - `weechat` - IRC client
 - `wireguard` - VPN protocol
