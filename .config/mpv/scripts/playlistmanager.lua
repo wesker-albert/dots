@@ -330,7 +330,7 @@ function stripfilename(pathfile, media_title)
     end
   end
   if settings.slice_longfilenames and tmp:len()>settings.slice_longfilenames_amount+5 then
-    tmp = tmp:sub(1, settings.slice_longfilenames_amount).." ..."
+    tmp = tmp:sub(1, settings.slice_longfilenames_amount).."…"
   end
   return tmp
 end
