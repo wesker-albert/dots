@@ -44,9 +44,13 @@ _send_notification() {
 }
 
 raise_volume() {
-    sh -c "pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ +$VOLUME_STEP%"
+    CURRENT_VOLUME=$(_get_current_volume)
 
-    _send_notification
+    if [ "$CURRENT_VOLUME" -lt 100 ]; then
+        sh -c "pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ +$VOLUME_STEP%"
+
+        _send_notification
+    fi
 }
 
 lower_volume() {
