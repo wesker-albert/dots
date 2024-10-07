@@ -122,8 +122,8 @@ search_videos() {
         fzf \
             --border-label " SELECT A VIDEO " \
             --preview-window right,40,border-sharp \
-            --preview "bash $CURRENT_DIR/fzf_mpv.sh _get_video_info {} &&
-                bash $CURRENT_DIR/fzf_mpv.sh _get_local_file_thumbnail {}") ||
+            --preview "bash $CURRENT_DIR/fzf_mpv.sh _get_local_file_thumbnail {} &&
+                bash $CURRENT_DIR/fzf_mpv.sh _get_video_info {}") ||
         return
 
     exec nohup mpv "$FZF_EXEC"
