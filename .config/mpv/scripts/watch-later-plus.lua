@@ -65,7 +65,7 @@ local function write_watched_file()
 		file:write(string.format('true'))
 		file:close()
 
-		msg.info('Wrote watched file:' .. filename)
+		msg.info('Wrote watched file: ' .. filename)
 	end
 end
 
