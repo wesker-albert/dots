@@ -2,6 +2,7 @@
 .config/aria2/incomplete
 .config/mpv/playlists
 .config/mpv/watch_later
+.config/mpv/watched
 .config/weechat/*/irc.conf
 .config/weechat/*/sec.conf
 .local/share/weechat/*/autoload
