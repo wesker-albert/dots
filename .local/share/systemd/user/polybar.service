@@ -4,7 +4,7 @@ Description=Polybar
 [Service]
 Type=simple
 ExecStartPre=/bin/sleep 1
-ExecStart=polybar main
+ExecStart=%h/.local/bin/start-polybar
 Restart=on-failure
 StandardOutput=file:/tmp/polybar.log
 

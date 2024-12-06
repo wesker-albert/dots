@@ -85,4 +85,4 @@ get_active_connection() {
     fi
 }
 
-$1 &
+$1

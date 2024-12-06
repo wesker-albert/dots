@@ -41,7 +41,9 @@ or referenced within my dots:
 - `herbstluftwm` - Tiling windows manager
 - `kitty` - Terminal
 - `librewolf` - Security-hardened Firefox fork
+- `mpd` - Music player daemon
 - `mpv` - Media player
+- `ncmpcpp` - Client for `mpd`
 - `nitrogen` - Wallpaper manager
 - `nmcli` - CLI client for Network Manager
 - `oh-my-zsh`, `powerline10k` - Shell
@@ -58,4 +60,4 @@ or referenced within my dots:
 - `wmctrl` - Window manager tools
 - `xsecurelock` - Secure screen locker
 - `xss-lock` - Screen locking service
-- `yt-dlp` - **Fuck the police**
+- `yt-dlp` - **Fuck tha police**

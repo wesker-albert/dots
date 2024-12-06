@@ -87,6 +87,9 @@ hc keybind $MOD-w                   spawn kitty weechat
 hc keybind XF86AudioRaiseVolume     spawn "$SCRIPTS"/audio-keys.sh "raise_volume"
 hc keybind XF86AudioLowerVolume     spawn "$SCRIPTS"/audio-keys.sh "lower_volume"
 hc keybind XF86AudioMute            spawn "$SCRIPTS"/audio-keys.sh "toggle_mute"
+hc keybind XF86AudioPrev            spawn "$SCRIPTS"/audio-keys.sh "prev_track"
+hc keybind XF86AudioPlay            spawn "$SCRIPTS"/audio-keys.sh "toggle_play"
+hc keybind XF86AudioNext            spawn "$SCRIPTS"/audio-keys.sh "next_track"
 
 # fn keys
 hc keybind $MOD-Menu                spawn rofi -show drun

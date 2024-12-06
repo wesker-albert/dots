@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -eu -o pipefail
+
+polybar main &
+polybar secondary & 
+polybar tertiary

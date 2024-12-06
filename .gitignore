@@ -3,6 +3,9 @@
 .config/mpv/playlists
 .config/mpv/watch_later
 .config/mpv/watched
+.config/nicotine/config*
 .config/weechat/*/irc.conf
 .config/weechat/*/sec.conf
+.local/bin/harlequin
+.local/bin/subliminal
 .local/share/weechat/*/autoload

@@ -4,7 +4,7 @@ Description=Restore wallper using Nitrogen
 [Service]
 Type=simple
 ExecStartPre=/bin/sleep 1
-ExecStart=nitrogen --restore
+ExecStart=%h/.local/bin/start-nitrogen
 Restart=on-failure
 StandardOutput=file:/tmp/nitrogen.log
 

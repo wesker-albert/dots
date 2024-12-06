@@ -17,14 +17,14 @@
     #
     # If this option is set to mouse or keyboard, the monitor option
     # will be ignored.
-    follow = none
+    follow = mouse
 
     ### Geometry ###
 
     # dynamic width from 0 to 300
     # width = (0, 300)
     # constant width of 300
-    width = (200, 600)
+    width = (300, 600)
 
     # The maximum height of a single notification, excluding the frame.
     height = 300
@@ -328,7 +328,7 @@
     foreground = "#DDDDDD"
     frame_color = "#CC6666"
     highight = "#DDDDDD"
-    timeout = 0
+    timeout = 10
     # Icon for notifications with critical urgency, uncomment to enable
     #default_icon = /path/to/icon
 
@@ -414,7 +414,6 @@
 
 [polybar-updates]
    appname = polybar-updates
-   timeout = 10
    format = "%s"
 
 [polybar-vpn]
@@ -437,4 +436,12 @@
    new_icon = "~/.local/share/weechat/notify.png"
    timeout = 0
 
-# vim: ft=cfg
+[audio-keys-volume]
+   appname = audio-keys-volume
+   format = "%s"
+
+[audio-keys-mpd]
+   appname = audio-keys-mpd
+   max_icon_size = 96
+   format = "<b>%s</b>\n\n%b"
+
