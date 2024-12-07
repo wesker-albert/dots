@@ -1,9 +1,14 @@
+local mp = require 'mp'
+local utils = require 'mp.utils'
+
+local home_path = mp.command_native({ 'expand-path', '~~desktop/' })
+
 --=============================================================================
 -->>    SUBLIMINAL PATH:
 --=============================================================================
 --          This script uses Subliminal to download subtitles,
 --          so make sure to specify your system's Subliminal location below:
-local subliminal = '/home/wesker/.local/bin/subliminal'
+local subliminal = home_path .. '/.local/bin/subliminal'
 --=============================================================================
 -->>    SUBTITLE LANGUAGE:
 --=============================================================================
@@ -59,11 +64,9 @@ local includes = {
     -- If anything is defined here, only the movies with a path
     -- containing any of these strings/paths will auto-download subtitles.
     -- Full paths are also allowed, e.g.:
-    '/home/wesker/Videos',
+    home_path .. '/Videos',
 }
 --=============================================================================
-local utils = require 'mp.utils'
-
 
 -- Download function: download the best subtitles in most preferred language
 function download_subs(language)
@@ -72,7 +75,7 @@ function download_subs(language)
         log('No Language found\n')
         return false
     end
-            
+
     log('Searching ' .. language[1] .. ' subtitles ...', 30)
 
     -- Build the `subliminal` command, starting with the executable:

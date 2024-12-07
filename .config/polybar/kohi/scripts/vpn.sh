@@ -85,4 +85,7 @@ get_active_connection() {
     fi
 }
 
+exec 100>$TMP_FILEPATH.lock || exit 0
+flock -w 2 100 || exit 0
+
 $1

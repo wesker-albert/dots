@@ -76,14 +76,14 @@ _send_mpd_notification() {
             -h string:x-dunst-stack-tag:audio-keys-mpd \
             --appname "audio-keys-mpd" \
             --icon "$(_get_mpd_current_album_art)" \
-            "Paused:" \
+            "Paused" \
             "$(_get_mpd_current_info)"
     else
         dunstify \
             -h string:x-dunst-stack-tag:audio-keys-mpd \
             --appname "audio-keys-mpd" \
             --icon "$(_get_mpd_current_album_art)" \
-            "Now Playing:" \
+            "Now Playing" \
             "$(_get_mpd_current_info)"
     fi
 }

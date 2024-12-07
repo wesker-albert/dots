@@ -57,4 +57,7 @@ get_update_count() {
     fi
 }
 
+exec 100>$TMP_FILEPATH.lock || exit 0
+flock -n 100 || exit 0
+
 $1
