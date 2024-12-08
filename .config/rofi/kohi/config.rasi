@@ -62,6 +62,31 @@ textbox {
     text-color:         #8E7B6B;
 }
 
+wrapper-title {
+    background-color:   inherit;
+    children:           [ textbox-title-icon, textbox-title ];
+    expand:             false;
+    orientation:        horizontal;
+    padding:            @--padding;
+    spacing:            0;
+}
+
+textbox-title-icon {
+    background-color:   inherit;
+    expand:             false;
+    horizontal-align:   0.5;
+    text-color:         #8E7B6B;
+    width:              30px;
+}
+
+textbox-title {
+    background-color:   inherit;
+    font:               "AudimatMono Nerd Font 14";
+    horizontal-align:   0.5;
+    padding:            0 0 0 -30px;
+    text-color:         #F4F4F4;
+}
+
 wrapper-mode-switcher {
     children:           [ mode-switcher ];
     expand:             false;

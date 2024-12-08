@@ -1,11 +1,11 @@
 # dots
 Instructions not included.
 
-I typically just keep this repo cloned at `~/Projects/dots` and then use symlinks in
-my home, `~/.config`, and `~/.local` folders, pointed at the appropriate resources.
+I typically just keep this repo cloned at `~/Projects/dots/` and then use symlinks in
+my home, `~/.config/`, and `~/.local/` folders, pointed at the appropriate resources.
 Allows for easy "continuous development" of sorts.
 
-The only exception to this approach, is the `./emptty` folder, which contains its own
+The only exception to this approach, is the `emptty/` folder, which contains its own
 README that explains what to do with it.
 
 ## Notes
@@ -13,7 +13,7 @@ README that explains what to do with it.
 I've tried to keep everything as "user agnostic" as possible, except for a couple
 limitations:
 
-- ~~`./.config/aria2/aria2.conf` won't allow you to use `~`, `%h`, or `$HOME` to complete
+- ~~`.config/aria2/aria2.conf` won't allow you to use `~`, `%h`, or `$HOME` to complete
 a user's home directory. So unfortunately, download and session directories are
 hardcoded.~~
 
@@ -21,9 +21,17 @@ As of `2024-08-23` the above is no longer the case. The offending lines have bee
 from the configuration file, and instead are set in the `start-aria2c` script as
 command parameters.
 
-- Some files in `./.local/bin` may have hardcoded paths, and would need a quick
+- Some files in `.local/bin/` may have hardcoded paths, and would need a quick
 glance over before you try to use them. I'd instead suggest just cherry picking files
 in this directory to suit your needs.
+
+---
+
+I use `arandr` as an `xrandr` frontend to make my life easier, and it just so happens to save config scripts to the `.screenlayout/` dir by default.
+
+After generating a config script for a specific arrangement of displays, I then manually
+append an appropriate `xwallpaper` command for that specific configuration. This allows
+my scripts (more specifically [`randr-layout-chooser`](.local/bin/randr-layout-chooser)) a fairly seamless way to switch display configurations on the fly.
 
 ## Tools expected
 
@@ -44,7 +52,6 @@ or referenced within my dots:
 - `mpd` - Music player daemon
 - `mpv` - Media player
 - `ncmpcpp` - Client for `mpd`
-- `nitrogen` - Wallpaper manager
 - `nmcli` - CLI client for Network Manager
 - `oh-my-zsh`, `powerline10k` - Shell
 - `phetch` - Gopher client
@@ -60,4 +67,5 @@ or referenced within my dots:
 - `wmctrl` - Window manager tools
 - `xsecurelock` - Secure screen locker
 - `xss-lock` - Screen locking service
+- `xwallpaper` - Wallpaper utility
 - `yt-dlp` - **Fuck tha police**

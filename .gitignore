@@ -9,3 +9,4 @@
 .local/bin/harlequin
 .local/bin/subliminal
 .local/share/weechat/*/autoload
+.screenlayout/previous_layout

@@ -66,6 +66,7 @@ hc keybind $MOD-c                   spawn kitty
 hc keybind $MOD-Control-m           spawn "$SCRIPTS"/launch-webapp.sh Meshtastic7722
 hc keybind $MOD-Escape              spawn loginctl lock-session
 hc keybind $MOD-f                   spawn freetube
+hc keybind $MOD-F4                  spawn ~/.local/bin/randr-layout-chooser "show_rofi_chooser"
 hc keybind $MOD-g                   spawn gimp
 hc keybind $MOD-i                   spawn librewolf
 hc keybind $MOD-m                   spawn "$SCRIPTS"/launch-kitty.sh "$SCRIPTS/fzf_mpv.sh search_videos" 100c 26c

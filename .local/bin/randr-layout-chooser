@@ -1,0 +1,55 @@
+#!/bin/bash
+
+set -eu -o pipefail
+
+LAYOUT_FOLDER="$HOME/.screenlayout"
+PREVIOUS_LAYOUT_FILE="$LAYOUT_FOLDER/previous_layout"
+
+ROFI_ICON="󰍺"
+ROFI_TITLE="xrandr layout"
+ROFI_THEME="window {children: [ wrapper-window ]; width: 400px;}
+        wrapper-window {children: [ wrapper-title, listview ];}
+        textbox-title-icon {content: \"$ROFI_ICON\";}
+        textbox-title {content: \"$ROFI_TITLE\";}
+        listview {lines: 8; fixed-height: false;}"
+
+LAYOUT_ICON=""
+EDITOR_ICON="󰏌"
+
+EDITOR_CMD="arandr"
+EDITOR_TEXT="$EDITOR_ICON open $EDITOR_CMD"
+
+_get_screenlayout_files() {
+    for FILE in "$LAYOUT_FOLDER"/*.sh; do
+        FILENAME=$(basename "$FILE")
+
+        echo "$LAYOUT_ICON $FILENAME"
+    done
+
+    echo "$EDITOR_TEXT"
+}
+
+_create_symlink() {
+    ln -sf "$1" "$PREVIOUS_LAYOUT_FILE"
+}
+
+init_previous_layout() {
+    exec "$PREVIOUS_LAYOUT_FILE"
+}
+
+show_rofi_chooser() {
+    CHOICE=$(_get_screenlayout_files |
+        rofi -markup-rows -dmenu -i -theme-str "$ROFI_THEME")
+
+    if [ "$CHOICE" == "$EDITOR_TEXT" ]; then
+        exec "$EDITOR_CMD"
+    else
+        CHOICE_FILE="$LAYOUT_FOLDER/${CHOICE/$LAYOUT_ICON /}"
+
+        _create_symlink "$CHOICE_FILE"
+
+        exec "$CHOICE_FILE"
+    fi
+}
+
+$1

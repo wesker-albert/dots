@@ -1,0 +1,12 @@
+[Unit]
+Description=Restore display and wallpaper layout
+
+[Service]
+Type=simple
+ExecStartPre=/bin/sleep 1
+ExecStart=%h/.local/bin/randr-layout-chooser init_previous_layout
+Restart=on-failure
+StandardOutput=file:/tmp/randr-layout-chooser.log
+
+[Install]
+WantedBy=default.target
