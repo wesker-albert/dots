@@ -2,6 +2,15 @@
 
 set -eu -o pipefail
 
-polybar main &
-polybar secondary & 
-polybar tertiary
+_get_monitors() {
+    polybar -M |
+        awk '{print $1;}' |
+        sed "s/://"
+}
+
+
+MONITORS=$(_get_monitors)
+
+for MONITOR in $MONITORS; do
+    polybar "$MONITOR" &
+done

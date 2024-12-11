@@ -6,6 +6,7 @@ Type=simple
 ExecStartPre=/bin/sleep 1
 ExecStart=%h/.local/bin/start-polybar
 Restart=on-failure
+RemainAfterExit=yes
 StandardOutput=file:/tmp/polybar.log
 
 [Install]
